@@ -42,15 +42,31 @@ namespace ItAcademy.HomeWork.NumberOne.Test
         public void When_Year_Bigger_TwoK_Expect_ZeroPointThree()
         {
             var taxSerice = new TaxService(null, null);
+
+            #region Main test old
+            //DateTime mainDateTest = Convert.ToDateTime("05/07/2007");
+            //Assert.AreEqual(0.3m, taxSerice.GetTax(mainDateTest));
+
+            ////Test for preventing changes
+            //DateTime dateStart = Convert.ToDateTime("31/12/2000");
+            //DateTime dateEnd = Convert.ToDateTime("01/01/2020");
+            //Assert.AreEqual(0.15m, taxSerice.GetTax(dateStart));
+            //Assert.AreEqual(0.2m, taxSerice.GetTax(dateEnd));
+            #endregion
+
             //Main test
-            DateTime mainDateTest = Convert.ToDateTime("05/07/2007");
-            Assert.AreEqual(0.3m, taxSerice.GetTax(mainDateTest));
-            
-            //Test for preventing changes
-            DateTime dateStart = Convert.ToDateTime("31/12/2000");
-            DateTime dateEnd = Convert.ToDateTime("01/01/2020");
-            Assert.AreEqual(0.15m, taxSerice.GetTax(dateStart));
-            Assert.AreEqual(0.2m, taxSerice.GetTax(dateEnd));
+            for (DateTime date = Convert.ToDateTime("01/01/2001");
+                 date < Convert.ToDateTime("01/01/2020");)
+            {
+                Assert.AreEqual(0.3m, taxSerice.GetTax(date));
+                date = date.AddYears(1);
+
+                //Test for preventing changes
+                DateTime dateStart = Convert.ToDateTime("31/12/2000");
+                DateTime dateEnd = Convert.ToDateTime("01/01/2020");
+                Assert.AreEqual(0.15m, taxSerice.GetTax(dateStart));
+                Assert.AreEqual(0.2m, taxSerice.GetTax(dateEnd));
+            }
         }
 
         [TestMethod]
