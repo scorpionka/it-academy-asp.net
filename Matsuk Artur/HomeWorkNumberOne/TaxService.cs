@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ItAcademy.HomeWork.NumberOne
+namespace TaxService
 {
     public class TaxService
     {
@@ -20,7 +20,7 @@ namespace ItAcademy.HomeWork.NumberOne
 
         public decimal GetTax(DateTime date)
         {
-             return GetTax((DateTime?)date);
+            return GetTax((DateTime?)date);
         }
 
         private decimal GetTax(DateTime? date = null)
