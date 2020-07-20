@@ -26,19 +26,31 @@ namespace TaxService.Tests
 
 
         [TestMethod]
-        public void GetTax_EnterDateTimeNow_return02()
+        public void GetTax_EnterYear2020_return0_2()
         {
-            Assert.AreEqual(0.2m, taxService.GetTax(DateTime.Now));
+            Assert.AreEqual(0.2m, taxService.GetTax(new DateTime(2020, 01, 01)));
         }
 
         [TestMethod]
-        public void GetTax_EnterYear2001_return03()
+        public void GetTax_EnterYear2019_return0_3()
+        {
+            Assert.AreEqual(0.3m, taxService.GetTax(new DateTime(2019, 01, 01)));
+        }
+
+        [TestMethod]
+        public void GetTax_EnterYear2001_return0_3()
         {
             Assert.AreEqual(0.3m, taxService.GetTax(new DateTime(2001, 01, 01)));
         }
 
         [TestMethod]
-        public void GetTax_EnterLessThan2000Years_return015()
+        public void GetTax_EnterYear2000_return0_15()
+        {
+            Assert.AreEqual(0.3m, taxService.GetTax(new DateTime(2000, 01, 01)));
+        }
+
+        [TestMethod]
+        public void GetTax_EnterLessThan2000Years_return0_15()
         {
             Assert.AreEqual(0.15m, taxService.GetTax(new DateTime(1999, 01, 01)));
         }
