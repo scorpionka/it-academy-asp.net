@@ -1,6 +1,6 @@
-using System;
+﻿using System;
 
-namespace ItAcademy.HomeWork.NumberOne
+namespace HW1
 {
     public class TaxService
     {
@@ -57,3 +57,4 @@ namespace ItAcademy.HomeWork.NumberOne
         DateTime GetCurrentDate(string uiCulture);
     }
 }
+
