@@ -1,7 +1,0 @@
-C:\Users\MSI\source\repos\scorpionka\it-academy-asp.net\Solution1\HW1\bin\Debug\HW1.exe.config
-C:\Users\MSI\source\repos\scorpionka\it-academy-asp.net\Solution1\HW1\bin\Debug\HW1.exe
-C:\Users\MSI\source\repos\scorpionka\it-academy-asp.net\Solution1\HW1\bin\Debug\HW1.pdb
-C:\Users\MSI\source\repos\scorpionka\it-academy-asp.net\Solution1\HW1\obj\Debug\HW1.csprojAssemblyReference.cache
-C:\Users\MSI\source\repos\scorpionka\it-academy-asp.net\Solution1\HW1\obj\Debug\HW1.csproj.CoreCompileInputs.cache
-C:\Users\MSI\source\repos\scorpionka\it-academy-asp.net\Solution1\HW1\obj\Debug\HW1.exe
-C:\Users\MSI\source\repos\scorpionka\it-academy-asp.net\Solution1\HW1\obj\Debug\HW1.pdb
