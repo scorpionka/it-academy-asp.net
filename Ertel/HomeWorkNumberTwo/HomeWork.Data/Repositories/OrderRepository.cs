@@ -16,13 +16,12 @@ namespace HomeWork.Data.Repositories
             List<Order> orders = new List<Order>();
             for (int i = 0; i < 5; i++)
             {
-                List<Book> books = new List<Book>();
+                List<OrderItem> orderItem = new List<OrderItem>();
                 for (int j = 0; j < i+1; j++)
                 {
-                    books.Add(new Book { Id = j, Name = $"book {j}", Price = j * 100 });
+                    orderItem.Add(new OrderItem { Id = j, Book = new Book { Id = j, Name = $"book {j}", Price = j * 100 }, Quantity = j + 1 });
                 }
-
-                orders.Add(new Order { Id = i, Name = $"book {i}", Books = books, Address = $"Test st. №{i}"});
+                orders.Add(new Order { Id = i, Name = $"order {i}", OrderItems = orderItem, Address = $"Test st. №{i}" });
             }
             return orders;
         }
@@ -32,15 +31,14 @@ namespace HomeWork.Data.Repositories
         IEnumerable<Order> IRepository<Order>.GetAll()
         {
             List<Order> orders = new List<Order>();
-            for (int i = 0; i < 50 ; i++)
+            for (int i = 0; i < 50; i++)
             {
-                List<Book> books = new List<Book>();
+                List<OrderItem> orderItem = new List<OrderItem>();
                 for (int j = 0; j < i + 1; j++)
                 {
-                    books.Add(new Book { Id = j, Name = $"book {j}", Price = j * 100 });
+                    orderItem.Add(new OrderItem { Id = j, Book = new Book { Id = j, Name = $"book {j}", Price = j * 100 }, Quantity = j + 1 });
                 }
-
-                orders.Add(new Order { Id = i, Name = $"book {i}", Books = books, Address = $"Test st. №{i}" });
+                orders.Add(new Order { Id = i, Name = $"order {i}", OrderItems = orderItem, Address = $"Test st. №{i}" });
             }
             return orders;
         }

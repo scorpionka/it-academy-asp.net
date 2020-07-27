@@ -11,11 +11,11 @@ namespace HomeWork.Data.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-        public ICollection<Book> Books { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; }
 
         public Order()
         {
-            Books = new List<Book>();
+            OrderItems = new List<OrderItem>();
         }
-}
+    }   
 }

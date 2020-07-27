@@ -11,11 +11,11 @@ namespace HomaWork.BLL.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-        public ICollection<BookModel> Books { get; set; }
+        public ICollection<OrderItemModel> OrderItems { get; set; }
 
         public OrderModel()
         {
-            Books = new List<BookModel>();
+            OrderItems = new List<OrderItemModel>();
         }
 }
 }

@@ -23,6 +23,9 @@ namespace HomeWork.Bll
 
                     cfg.CreateMap<Order, OrderModel>();
                     cfg.CreateMap<OrderModel, Order>();
+
+                    cfg.CreateMap<OrderItem, OrderItemModel>();
+                    cfg.CreateMap<OrderItemModel, OrderItem>();
                 });
 
                 mapper = new Mapper(config);
