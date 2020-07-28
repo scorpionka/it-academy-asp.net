@@ -1,13 +1,13 @@
 ﻿using System;
 
-namespace ItAcademy.HomeWork.NumberOne
+namespace HomeWorkOne
 {
-    public class TaxService
+    public class TaxService1
     {
         private readonly IDateTimeService dateTimeService;
         private readonly IUserService userService;
 
-        public TaxService(IDateTimeService dateTimeService, IUserService userService)
+        public TaxService1(IDateTimeService dateTimeService, IUserService userService)
         {
             this.dateTimeService = dateTimeService;
             this.userService = userService;
@@ -20,7 +20,7 @@ namespace ItAcademy.HomeWork.NumberOne
 
         public decimal GetTax(DateTime date)
         {
-             return GetTax((DateTime?)date);
+            return GetTax((DateTime?)date);
         }
 
         private decimal GetTax(DateTime? date = null)
