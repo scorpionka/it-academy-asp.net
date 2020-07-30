@@ -13,7 +13,7 @@ namespace HW2.Data.Repositories
             new Book(){Id = 3, Title = "Lev Tolstoy. War and Peace.", Amount = 8},
             new Book(){Id = 4, Title = "F. Scott Fitzgerald. The Great Gatsby.", Amount = 2},
             new Book(){Id = 5, Title = "Harper Lee. To Kill a Mockingbird.", Amount = 0},
-            new Book(){Id = 6, Title = "J.K. Rowling. Harry Potter and the Sorcerer's Stone.", Amount = 1},
+            new Book(){Id = 6, Title = "J.K. Rowling. Harry Potter and the Sorcerer s Stone.", Amount = 1},
             new Book(){Id = 7, Title = "George Orwell. 1984.", Amount = 10},
             new Book(){Id = 8, Title = "J.D. Salinger. The Catcher in the Rye.", Amount = 2},
             new Book(){Id = 9, Title = "J.R.R. Tolkien. The Hobbit.", Amount = 5},
