@@ -22,11 +22,26 @@ namespace HW2.Client.Controllers
         {
             List<Book> book = bookDomainService.AllBooks();
 
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<List<Book>, BookView>());
-            var map = new Mapper(config);
-            var bookView = map.Map<List<Book>, BookView>(book);
+            //var config = new MapperConfiguration(cfg => cfg.CreateMap<List<Book>, BookView>());
+            //var map = new Mapper(config);
+            //var bookView = map.Map<List<Book>, BookView>(book);
 
-            return Json(bookView, JsonRequestBehavior.AllowGet);
+            //return Json(bookView, JsonRequestBehavior.AllowGet);
+            return Json(book, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public JsonResult TopFiveBooks()
+        {
+            List<Book> book = bookDomainService.TopFiveBooks();
+
+            //var config = new MapperConfiguration(cfg => cfg.CreateMap<List<Book>, BookView>());
+            //var map = new Mapper(config);
+            //var bookView = map.Map<List<Book>, BookView>(book);
+
+            //return Json(bookView, JsonRequestBehavior.AllowGet);
+            return Json(book, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

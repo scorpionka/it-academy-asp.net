@@ -60,10 +60,14 @@
     <Compile Include="Class1.cs" />
     <Compile Include="DomainServices\BookDomainService.cs" />
     <Compile Include="DomainServices\Interfaces\IBookDomainService.cs" />
+    <Compile Include="DomainServices\Interfaces\IOrderDomainService.cs" />
+    <Compile Include="DomainServices\OrderDomainService.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IBaseRepository.cs" />
     <Compile Include="Repositories\IBookRepository.cs" />
+    <Compile Include="Repositories\IOrderRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

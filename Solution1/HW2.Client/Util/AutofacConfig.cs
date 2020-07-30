@@ -21,6 +21,8 @@ namespace HW2.Client.Util
             // регистрируем споставление типов
             builder.RegisterType<BookDomainService>().As<IBookDomainService>();
             builder.RegisterType<BookRepository>().As<IBookRepository>();
+            builder.RegisterType<OrderDomainService>().As<IOrderDomainService>();
+            builder.RegisterType<OrderRepository>().As<IOrderRepository>();
 
             // создаем новый контейнер с теми зависимостями, которые определены выше
             var container = builder.Build();

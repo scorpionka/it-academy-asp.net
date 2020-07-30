@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace HW2.Domain.DomainServices.Interfaces
 {
-    public interface IBookDomainService
+    public interface IOrderDomainService
     {
-        List<Book> AllBooks();
-        List<Book> TopFiveBooks();
+        List<Order> AllOrders();
+        List<Order> TodayOrders();
     }
 }
