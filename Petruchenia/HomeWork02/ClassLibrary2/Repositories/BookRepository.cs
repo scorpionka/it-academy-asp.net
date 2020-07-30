@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLibrary2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,18 @@ namespace ClassLibrary2.Repositories
 {
     public class BookRepository : BaseRepository, IBookRepository
     {
+        private BookContext db;
+        public BookRepository(BookContext context)
+        {
+            db = context;
+        }
+
+        public BookContext Context
+        {
+            get { return db; }
+            set { db = value; }
+        }
+
         public BookData ShowAllOrders()
         {
             throw new NotImplementedException();

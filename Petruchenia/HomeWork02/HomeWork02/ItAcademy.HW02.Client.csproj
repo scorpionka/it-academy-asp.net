@@ -143,6 +143,7 @@
     </Compile>
     <Compile Include="Models\BookView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\AutofacConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -202,6 +203,10 @@
     <ProjectReference Include="..\ClassLibrary1\ItAcademy.HW02.Domain.csproj">
       <Project>{bedceadb-8d58-45e8-87a7-f8f6763918f8}</Project>
       <Name>ItAcademy.HW02.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClassLibrary2\ItAcademy.HW02.Data.csproj">
+      <Project>{782E8A0F-CBAA-4DF5-99FA-1EE9B444C63C}</Project>
+      <Name>ItAcademy.HW02.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

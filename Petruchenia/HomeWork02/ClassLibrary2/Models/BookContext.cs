@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary2.Models
 {
-    class BookContext
+    public class BookContext
     {
     }
 }
