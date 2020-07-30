@@ -9,6 +9,6 @@ namespace HW2.Domain.Repositories
 {
     public interface IBookRepository: IBaseRepository
     {
-        Book AllOrders();
+        List<Book> AllBooks();
     }
 }

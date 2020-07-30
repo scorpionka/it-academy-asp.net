@@ -18,9 +18,9 @@ namespace HW2.Domain.DomainServices
             this.bookRepository = bookRepository;
         }
 
-        public Book AllOrders()
+        public List<Book> AllBooks()
         {
-            Book bookData = bookRepository.AllOrders();
+            List<Book> bookData = bookRepository.AllBooks();
 
             return bookData;
         }

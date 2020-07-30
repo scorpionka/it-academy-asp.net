@@ -2,10 +2,7 @@
 using HW2.Client.Models;
 using HW2.Domain.DomainServices.Interfaces;
 using HW2.Domain.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace HW2.Client.Controllers
@@ -18,16 +15,18 @@ namespace HW2.Client.Controllers
         {
             this.bookDomainService = bookDomainService;
         }
+
         // GET: Book
-        public JsonResult AllOrders()
+        [HttpGet]
+        public JsonResult AllBooks()
         {
-            Book book = bookDomainService.AllOrders();
+            List<Book> book = bookDomainService.AllBooks();
 
-            //BookView bookView = Mapper.Map<Book, BookView>(book);
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<List<Book>, BookView>());
+            var map = new Mapper(config);
+            var bookView = map.Map<List<Book>, BookView>(book);
 
-            throw new NotImplementedException();
-
-            //return Json(bookView);
+            return Json(bookView, JsonRequestBehavior.AllowGet);
         }
     }
 }

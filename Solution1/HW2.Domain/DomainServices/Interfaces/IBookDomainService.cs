@@ -9,6 +9,6 @@ namespace HW2.Domain.DomainServices.Interfaces
 {
     public interface IBookDomainService
     {
-        Book AllOrders();
+        List<Book> AllBooks();
     }
 }
