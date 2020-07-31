@@ -16,28 +16,19 @@ namespace Bookshop.Client.App_Start
     {
         public static void ConfigureContainer()
         {
-            // получаем экземпляр контейнера
             var builder = new ContainerBuilder();
 
-            // регистрируем контроллер в текущей сборке
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
 
-            // регистрируем споставление типов
-            builder.RegisterType<GetAllOrdersDomainService>().As<IGetAllOrdersDomainService>();
-            builder.RegisterType<GetOrdersMadeTodayDomainService>().As<IGetOrdersMadeTodayDomainService>();
-
-            builder.RegisterType<GetAllBooksDomainService>().As<IGetAllBooksDomainService>();
-            builder.RegisterType<GetTopFiveBooksDomainService>().As<IGetTopFiveBooksDomainService>();
+            builder.RegisterType<BooksDomainService>().As<IBooksDomainService>();
+            builder.RegisterType<OrdersDomainService>().As<IOrdersDomainService>();
 
             builder.RegisterType<ProductRepository>().As<IProductRepository>();
             builder.RegisterType<OrderRepository>().As<IOrderRepository>();
-            builder.RegisterType<VirtualDb>().As<IVirtualDb>();
+            builder.RegisterType<VirtualDb>().As<IVirtualDb>().SingleInstance();
 
-
-            // создаем новый контейнер с теми зависимостями, которые определены выше
             var container = builder.Build();
 
-            // установка сопоставителя зависимостей
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
     }

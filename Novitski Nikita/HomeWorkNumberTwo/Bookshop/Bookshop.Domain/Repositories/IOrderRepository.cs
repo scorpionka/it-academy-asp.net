@@ -10,5 +10,7 @@ namespace Bookshop.Domain.Repositories
     public interface IOrderRepository
     {
         List<Order> GetAllOrders();
+        List<Order> GetOrdersMadeToday();
+
     }
 }

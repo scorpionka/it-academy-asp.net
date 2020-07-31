@@ -9,15 +9,13 @@ namespace Bookshop.Client.Controllers
 {
     public class OrderController : Controller  
     {
-        private readonly IGetAllOrdersDomainService ordersDomainService;
-        private readonly IGetOrdersMadeTodayDomainService getOrdersMadeTodayDS;
-        
+        private readonly IOrdersDomainService ordersDomainService;
 
-        public OrderController(IGetAllOrdersDomainService getAllOrdersDomain, IGetOrdersMadeTodayDomainService getOrdersMadeTodayDS)
+        public OrderController(IOrdersDomainService ordersDomainService)
         {
-            ordersDomainService = getAllOrdersDomain;
-            this.getOrdersMadeTodayDS = getOrdersMadeTodayDS;
+            this.ordersDomainService = ordersDomainService;
         }
+
         [HttpGet]
         public ActionResult GetAllOrders()
         {
@@ -30,10 +28,11 @@ namespace Bookshop.Client.Controllers
 
             return Json(ordersVm, JsonRequestBehavior.AllowGet);
         }
+
         [HttpGet]
         public ActionResult GetOrdersMadeToday()
         {
-            List<Order> orders = getOrdersMadeTodayDS.GetOrdersMadeToday();
+            List<Order> orders = ordersDomainService.GetOrdersMadeToday();
             
             var config = new MapperConfiguration(cfg => cfg.CreateMap<List<Order>, GetOrdersMadeTodayVm>()  // used for mapping example
                     .ForMember(dest => dest.Orders, opt => opt.MapFrom(c => c)));
