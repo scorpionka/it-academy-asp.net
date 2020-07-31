@@ -22,7 +22,7 @@ namespace HW2.Client.Controllers
         {
             List<Book> book = bookDomainService.AllBooks();
 
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<List<Book>, BookView>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<List<Book>, BookView>().ForMember(x => x.Book);
             var map = new Mapper(config);
             var bookView = map.Map<List<Book>, BookView>(book);
 
