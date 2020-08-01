@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<form enctype="multipart/form-data" action="Shop/GetOrder" method="get">
+    <p><input type="submit" value="Получить заказ." /></p>
+</form>
+
+<form enctype="multipart/form-data" action="Shop/GetAllOrders" method="get">
+    <p><input type="submit" value="Получить все заказы." /></p>
+</form>
+
+<form enctype="multipart/form-data" action="Shop/GetTodayOrders" method="get">
+    <p><input type="submit" value="Получить все сегодняшние заказы." /></p>
+</form>
+
+<form enctype="multipart/form-data" action="Shop/GetBook" method="get">
+    <p><input type="submit" value="Получить книгу." /></p>
+</form>
+
+<form enctype="multipart/form-data" action="Shop/GetAllBooks" method="get">
+    <p><input type="submit" value="Получить все книги." /></p>
+</form>
+
+<form enctype="multipart/form-data" action="Shop/GetTopFiveBooks" method="get">
+    <p><input type="submit" value="Получить топ 5 популярных книг." /></p>
+</form>
