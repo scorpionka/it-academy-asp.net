@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using AutoMapper.Configuration.Conventions;
 using HW2.Client.Models;
 using HW2.Domain.DomainServices.Interfaces;
 using HW2.Domain.Models;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Web.Mvc;
 
 namespace HW2.Client.Controllers
@@ -20,12 +22,11 @@ namespace HW2.Client.Controllers
         [HttpGet]
         public JsonResult AllBooks()
         {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<List<Book>, BookView>()
+                .ForMember(dest => dest.Books, opt => opt.MapFrom(c => c)));
             List<Book> book = bookDomainService.AllBooks();
-
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<List<Book>, BookView>().ForMember(x => x.Book);
             var map = new Mapper(config);
             var bookView = map.Map<List<Book>, BookView>(book);
-
             return Json(bookView, JsonRequestBehavior.AllowGet);
             //return Json(book, JsonRequestBehavior.AllowGet);
         }
@@ -33,14 +34,13 @@ namespace HW2.Client.Controllers
         [HttpGet]
         public JsonResult TopFiveBooks()
         {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<List<Book>, BookView>()
+                .ForMember(dest => dest.Books, opt => opt.MapFrom(c => c)));
             List<Book> book = bookDomainService.TopFiveBooks();
-
-            //var config = new MapperConfiguration(cfg => cfg.CreateMap<List<Book>, BookView>());
-            //var map = new Mapper(config);
-            //var bookView = map.Map<List<Book>, BookView>(book);
-
-            //return Json(bookView, JsonRequestBehavior.AllowGet);
-            return Json(book, JsonRequestBehavior.AllowGet);
+            var map = new Mapper(config);
+            var bookView = map.Map<List<Book>, BookView>(book);
+            return Json(bookView, JsonRequestBehavior.AllowGet);
+            //return Json(book, JsonRequestBehavior.AllowGet);
         }
 
     }
