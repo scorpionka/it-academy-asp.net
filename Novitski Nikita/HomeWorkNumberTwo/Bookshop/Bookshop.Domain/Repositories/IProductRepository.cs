@@ -10,5 +10,6 @@ namespace Bookshop.Domain.Repositories
     public interface IProductRepository
     {
         List<Book> GetAllBooks();
+        List<Book> GetTopBooks(int count);
     }
 }

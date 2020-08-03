@@ -1,18 +1,14 @@
 ﻿using Bookshop.Domain.DomainServices.OrderDomainService.OrderInterfaces;
 using Bookshop.Domain.Models.Entities;
 using Bookshop.Domain.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bookshop.Domain.DomainServices.OrderDomainService
 {
-    public class GetAllOrdersDomainService : IGetAllOrdersDomainService
+    public class OrdersDomainService : IOrdersDomainService
     {
         private readonly IOrderRepository orderRepository;
-        public GetAllOrdersDomainService(IOrderRepository orderRepository)
+        public OrdersDomainService(IOrderRepository orderRepository)
         {
             this.orderRepository = orderRepository;
         }
@@ -21,5 +17,10 @@ namespace Bookshop.Domain.DomainServices.OrderDomainService
         {
             return orderRepository.GetAllOrders();
         }
+        public List<Order> GetOrdersMadeToday()
+        {
+            return orderRepository.GetOrdersMadeToday();
+        }
+
     }
 }

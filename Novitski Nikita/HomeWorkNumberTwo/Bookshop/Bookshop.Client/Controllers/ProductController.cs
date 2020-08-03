@@ -10,14 +10,11 @@ namespace Bookshop.Client.Controllers
     public class ProductController : Controller  
     {
         // GET: Product
-        private readonly IGetAllBooksDomainService booksDomainService;
-        private readonly IGetTopFiveBooksDomainService getTopFiveBooks;
+        private readonly IBooksDomainService booksDomainService;
 
-        public ProductController(IGetAllBooksDomainService booksDomainService, IGetTopFiveBooksDomainService getTopFiveBooks)
+        public ProductController(IBooksDomainService booksDomainService)
         {
             this.booksDomainService = booksDomainService;
-            this.getTopFiveBooks = getTopFiveBooks;
-
         }
 
         [HttpGet]
@@ -38,7 +35,7 @@ namespace Bookshop.Client.Controllers
         public ActionResult GetTopFiveBooks()
         {
 
-            List<Book> books = getTopFiveBooks.GetTopFiveBooks();
+            List<Book> books = booksDomainService.GetTopFiveBooks();
 
             var config = new MapperConfiguration(cfg => cfg.CreateMap<List<Book>, GetTopFiveBooksVm>()  // used for mapping example
                     .ForMember(dest => dest.Books, opt => opt.MapFrom(c => c)));
