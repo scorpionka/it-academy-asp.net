@@ -30,10 +30,10 @@ namespace WebApplication5.Controllers
 
         public ActionResult GetAllBooks()
         {
-            var topFiveBook = BookDomainService.AllBooks();
+            var ALlBooks = BookDomainService.AllBooks();
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Book, ModelsViewBook>());
             var map = new Mapper(config);
-            var books = map.Map<List<Book>, List<ModelsViewBook>>(topFiveBook);
+            var books = map.Map<List<Book>, List<ModelsViewBook>>(ALlBooks);
 
             return Json(books, JsonRequestBehavior.AllowGet);
         }
