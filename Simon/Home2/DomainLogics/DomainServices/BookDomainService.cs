@@ -12,45 +12,21 @@ namespace DomainLogics.DomainServices
 {
     public class BookDomainService : IBookDomainService
     {
-        public List<Book> AllBooks()
+        
+        private readonly IBookRepository bookRepository;
+        public BookDomainService(IBookRepository bookRepository)
         {
-            BookOrder order = new BookOrder()
-            {
-                Book = new Book { BookAuthor = "author", BookPrice = 1, BookTitle = "title" },
-                TimeOrder = DateTime.Now
-            };
-
-            var orders = new List<BookOrder>();
-            orders.Add(order);
-            var allBooks = orders.Select(x => x.Book).ToList();
-            return allBooks;
+            this.bookRepository = bookRepository;
         }
 
-        //private readonly IBookRepository bookRepository;
-        //public BookDomainService(IBookRepository bookRepository)
-        //{
-        //    this.bookRepository = bookRepository;
-        //}
+        public List<Book> AllBooks()
+        {
+            return bookRepository.AllBooks();
+        }
 
         public List<Book> FiveMostPopularBooks()
         {
-
-            var order = new BookOrder()
-            {
-                Book = new Book { BookAuthor = "author", BookPrice = 1, BookTitle = "title" },
-                TimeOrder = DateTime.Now
-            };
-
-           var orders = new List<BookOrder>();
-            orders.Add(order);
-         
-            var fiveMostPopularBooks = orders.GroupBy(x => x.Book)
-                .Select(g => new { Name = g.Key, Count = g.Count() })
-                .OrderBy(x => x.Count)
-                .Take(5)
-                .Select(x => x.Name)
-                .ToList<Book>();
-            return fiveMostPopularBooks;
+           return bookRepository.GetMostPopular();
         }
     }
 }
