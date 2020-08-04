@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace Bookshop.Client.Models.Orders.Queries
 {
-    public class GetOrdersMadeTodayVm
+    public class GetAllOrdersViewModel
     {
-        public List<Order> Orders { get; set; }
+       public List<Order> Orders { get; set; }
     }
 }

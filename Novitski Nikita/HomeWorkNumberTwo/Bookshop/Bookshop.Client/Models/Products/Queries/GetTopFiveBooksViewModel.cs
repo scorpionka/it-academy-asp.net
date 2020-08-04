@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Bookshop.Client.Models.Products.Queries
 {
-    public class GetAllBooksVm
+    public class GetTopFiveBooksViewModel
     {
         public List<Book> Books { get; set; }
     }
