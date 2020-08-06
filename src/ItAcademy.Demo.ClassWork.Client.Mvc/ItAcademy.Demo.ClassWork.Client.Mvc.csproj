@@ -121,9 +121,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ModelBinderExampleController.cs" />
+    <Compile Include="Controllers\TryUpdateModelController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Binders\DecimalModelBinder.cs" />
+    <Compile Include="Infrastructure\Filters\CustomActionFilter.cs" />
+    <Compile Include="Infrastructure\Filters\CustomAuthenticationFilter.cs" />
+    <Compile Include="Models\ModelBinderExample\PersonViewModel.cs" />
+    <Compile Include="Models\ModelBinderExample\StudentViewModel.cs" />
+    <Compile Include="Models\TryUpdateModel\PersonViewModel.cs" />
+    <Compile Include="Models\TryUpdateModel\StudentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -165,7 +174,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\ModelBinderExample\" />
+    <Folder Include="Views\TryUpdateModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
