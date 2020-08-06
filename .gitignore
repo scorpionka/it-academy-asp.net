@@ -1,0 +1,12 @@
+obj/
+bin/
+*.log
+*.suo
+*.user
+*.DotSettings
+.vs/
+packages/
+*.jfm
+*.refactorlog
+*.dbmdl
+*.Cache
