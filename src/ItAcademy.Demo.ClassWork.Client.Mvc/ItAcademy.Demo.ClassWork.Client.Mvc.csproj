@@ -129,6 +129,8 @@
     <Compile Include="Infrastructure\Binders\DecimalModelBinder.cs" />
     <Compile Include="Infrastructure\Filters\CustomActionFilter.cs" />
     <Compile Include="Infrastructure\Filters\CustomAuthenticationFilter.cs" />
+    <Compile Include="Infrastructure\Filters\CustomExceptionFilter.cs" />
+    <Compile Include="Infrastructure\Filters\CustomResultFilter.cs" />
     <Compile Include="Models\ModelBinderExample\PersonViewModel.cs" />
     <Compile Include="Models\ModelBinderExample\StudentViewModel.cs" />
     <Compile Include="Models\TryUpdateModel\PersonViewModel.cs" />
