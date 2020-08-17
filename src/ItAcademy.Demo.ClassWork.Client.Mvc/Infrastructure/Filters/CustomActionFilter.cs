@@ -7,7 +7,6 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Infrastructure.Filters
     {
         public void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            //filterContext.HttpContext.Response.Write(
             Debug.WriteLine($"CustomActionFilter: OnActionExecuted");
         }
 
