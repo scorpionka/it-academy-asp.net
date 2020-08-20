@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using System.Web.Mvc.Routing.Constraints;
 using System.Web.Routing;
 
@@ -17,7 +18,14 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc
                 defaults: new { controller = "RouteDemo", action = "GetCurrentDate", 
                     shiftDays = UrlParameter.Optional, 
                     shiftYears = UrlParameter.Optional },
-                constraints: new { shiftDays = new RangeRouteConstraint(1,15) }
+                constraints: new { 
+                    shiftDays = new CompoundRouteConstraint(
+                        new List<IRouteConstraint> 
+                        { 
+                            new RangeRouteConstraint(1, 15), 
+                            new IntRouteConstraint() 
+                        } ), 
+                    shiftYears = new RangeRouteConstraint(1, 15) }
             );
 
             routes.MapRoute(
