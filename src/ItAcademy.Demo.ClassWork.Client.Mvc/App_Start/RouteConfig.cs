@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using System.Web.Mvc.Routing.Constraints;
 using System.Web.Routing;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc
@@ -9,10 +10,21 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapMvcAttributeRoutes();
+
+            routes.MapRoute(
+                name: "RouteDemo1",
+                url: "datetime/getcurrentdate/{shiftDays}_{shiftYears}",
+                defaults: new { controller = "RouteDemo", action = "GetCurrentDate", 
+                    shiftDays = UrlParameter.Optional, 
+                    shiftYears = UrlParameter.Optional },
+                constraints: new { shiftDays = new RangeRouteConstraint(1,15) }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "ItAcademy.Demo.ClassWork.Client.Mvc.Controllers" }
             );
         }
     }

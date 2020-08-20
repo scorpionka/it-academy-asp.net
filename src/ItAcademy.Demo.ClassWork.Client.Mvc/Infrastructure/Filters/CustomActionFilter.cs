@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Web.Mvc;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc.Infrastructure.Filters

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc.Infrastructure.Filters
 {
-    public class CustomExceptionFilter : FilterAttribute, IExceptionFilter
+    public class CustomExceptionFilter : ActionFilterAttribute, IExceptionFilter
     {
         public void OnException(ExceptionContext filterContext)
         {
