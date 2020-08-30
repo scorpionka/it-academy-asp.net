@@ -4,7 +4,7 @@ namespace HW3.Domain.Models
 {
     public class City
     {
-        public int Id { get; set; }
-        public string CityId { get; set; }
+        public Guid Id { get; set; }
+        public string Name { get; set; }
     }
 }

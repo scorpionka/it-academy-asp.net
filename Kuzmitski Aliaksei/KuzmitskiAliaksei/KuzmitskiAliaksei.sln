@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW3.Domain", "..\HW3\Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW3.Data", "..\HW3\Data\HW3.Data\HW3.Data.csproj", "{D342E6D8-EB90-4FCA-BFC5-98C794956183}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 Presentation", "1 Presentation", "{94B4DBEC-2F0E-4358-99B7-E87333D7594B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 Domain", "2 Domain", "{BCBEC330-42A7-4D7B-BA67-083A7920AADD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 Infrastructure", "3 Infrastructure", "{F63DE620-161D-462D-8D2C-B552EDA8122B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +36,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B0F60FD5-8FAE-4006-80C8-6975347AD643} = {94B4DBEC-2F0E-4358-99B7-E87333D7594B}
+		{912E67A0-447D-40D1-BCD3-29584342EA9A} = {BCBEC330-42A7-4D7B-BA67-083A7920AADD}
+		{D342E6D8-EB90-4FCA-BFC5-98C794956183} = {F63DE620-161D-462D-8D2C-B552EDA8122B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BB362316-BDAD-466D-ACCD-4ADD4F93AFAF}
