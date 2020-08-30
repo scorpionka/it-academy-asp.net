@@ -8,14 +8,8 @@ namespace HW3.Data.Repositories
 {
     public class UserRepository : BaseRepository, IUserRepository
     {
-        private List<User> users;
-        private List<Country> countries;
-        private List<City> cities;
-
         public UserRepository()
         {
-            users = new List<User>();
-
             countries = new List<Country>()
             {
                 new Country(){Id = new Guid(), Name = "Belarus"},
@@ -66,7 +60,14 @@ namespace HW3.Data.Repositories
                 new City(){Id = new Guid(), Name = "Birmingham"},
                 new City(){Id = new Guid(), Name = "Leeds"},
             };
+
+            users = new List<User>();
+
         }
+
+        private List<User> users;
+        private List<Country> countries;
+        private List<City> cities;
 
         public void CreateUser(User user)
         {
@@ -75,7 +76,7 @@ namespace HW3.Data.Repositories
 
         public User ReadUser(Guid id)
         {
-            return users.FirstOrDefault(x => x.Id.Equals(id));
+            return users.Find(x => x.Id.Equals(id));
         }
 
         public void UpdateUser(User user)
@@ -96,7 +97,7 @@ namespace HW3.Data.Repositories
 
         public Country ReadCountry(Guid id)
         {
-            return countries.FirstOrDefault(x => x.Id.Equals(id));
+            return countries.Find(x => x.Id.Equals(id));
         }
 
         public List<Country> AllCountries()
@@ -107,7 +108,7 @@ namespace HW3.Data.Repositories
 
         public City ReadCity(Guid id)
         {
-            return cities.FirstOrDefault(x => x.Id.Equals(id));
+            return cities.Find(x => x.Id.Equals(id));
         }
 
         public List<City> AllCities()
