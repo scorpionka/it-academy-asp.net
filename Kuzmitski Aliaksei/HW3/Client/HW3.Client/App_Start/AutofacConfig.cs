@@ -16,8 +16,8 @@ namespace HW3.Client.App_Start
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
-            builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance();
             builder.RegisterType<UserDomainService>().As<IUserDomainService>().SingleInstance();
+            builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance();
             builder.RegisterType<UserPresentationService>().As<IUserPresentationService>().SingleInstance();
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

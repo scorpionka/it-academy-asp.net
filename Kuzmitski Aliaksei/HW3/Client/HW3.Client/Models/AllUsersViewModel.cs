@@ -6,6 +6,7 @@ namespace HW3.Client.Models
 {
     public class AllUsersViewModel
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public Title Title { get; set; }
 
@@ -19,8 +20,8 @@ namespace HW3.Client.Models
         public string Comments { get; set; }
 
 
-        public string Country { get; set; }
+        public Country Country { get; set; }
 
-        public string City { get; set; }
+        public City City { get; set; }
     }
 }

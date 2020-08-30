@@ -26,6 +26,7 @@ namespace HW3.Client.Util
         {
             return new AllUsersViewModel
             {
+                Id = user.Id,
                 Name = $"{user.FirstName} {user.LastName}",
                 Title = user.Title,
                 Country = user.Country,

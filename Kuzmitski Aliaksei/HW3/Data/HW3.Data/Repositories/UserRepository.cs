@@ -8,15 +8,15 @@ namespace HW3.Data.Repositories
 {
     public class UserRepository : BaseRepository, IUserRepository
     {
-        private readonly List<User> users;
-        private readonly List<Country> countries;
-        private readonly List<City> cities;
+        private List<User> users;
+        private List<Country> countries;
+        private List<City> cities;
 
-        public UserRepository(List<User> users)
+        public UserRepository()
         {
-            this.users = users;
+            users = new List<User>();
 
-            List<Country> countries = new List<Country>()
+            countries = new List<Country>()
             {
                 new Country(){Id = new Guid(), Name = "Belarus"},
                 new Country(){Id = new Guid(), Name = "Russia"},
@@ -31,7 +31,7 @@ namespace HW3.Data.Repositories
                 new Country(){Id = new Guid(), Name = "Great Britain"},
             };
 
-            List<City> cities = new List<City>()
+            cities = new List<City>()
             {
                 new City(){Id = new Guid(), Name = "Minsk"},
                 new City(){Id = new Guid(), Name = "Gomel"},

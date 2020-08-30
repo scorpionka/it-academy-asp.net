@@ -13,9 +13,9 @@ namespace HW3.Domain.Models
         public string Comments { get; set; }
 
         public Guid CountryId { get; set; }
-        public string Country { get; set; }
+        public Country Country { get; set; }
 
         public Guid CityId { get; set; }
-        public string City { get; set; }
+        public City City { get; set; }
     }
 }

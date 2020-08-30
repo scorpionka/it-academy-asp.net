@@ -1,6 +1,5 @@
 ﻿using HW3.Domain.Models;
 using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace HW3.Client.Models
@@ -21,10 +20,8 @@ namespace HW3.Client.Models
         public string Comments { get; set; }
 
 
-        [DisplayName("Country")]
         public Guid CountryId { get; set; }
 
-        [DisplayName("City")]
         public Guid CityId { get; set; }
     }
 }
