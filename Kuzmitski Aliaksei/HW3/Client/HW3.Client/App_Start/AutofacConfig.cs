@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using HW3.Client.PresentationServices;
+using HW3.Client.PresentationServices.Interfaces;
 using HW3.Data.Repositories;
 using HW3.Domain.DomainServices;
 using HW3.Domain.DomainServices.Interfaces;
@@ -14,6 +16,7 @@ namespace HW3.Client.App_Start
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterType<UserPresentationService>().As<IUserPresentationService>();
             builder.RegisterType<UserDomainService>().As<IUserDomainService>();
             builder.RegisterType<UserRepository>().As<IUserRepository>();
             var container = builder.Build();

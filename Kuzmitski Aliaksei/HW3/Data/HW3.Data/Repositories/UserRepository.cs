@@ -8,13 +8,13 @@ namespace HW3.Data.Repositories
 {
     public class UserRepository : BaseRepository, IUserRepository
     {
-        private List<User> users;
-        private List<Country> countries;
-        private List<City> cities;
+        private readonly List<User> users;
+        private readonly List<Country> countries;
+        private readonly List<City> cities;
 
-        public UserRepository()
+        public UserRepository(List<User> users)
         {
-            List<User> users = new List<User>();
+            this.users = users;
 
             List<Country> countries = new List<Country>()
             {
