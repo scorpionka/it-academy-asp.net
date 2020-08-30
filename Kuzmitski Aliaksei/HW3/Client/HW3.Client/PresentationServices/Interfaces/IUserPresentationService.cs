@@ -1,16 +1,21 @@
-﻿namespace HW3.Client.PresentationServices.Interfaces
+﻿using HW3.Client.Models;
+using HW3.Domain.Models;
+using System;
+using System.Collections.Generic;
+
+namespace HW3.Client.PresentationServices.Interfaces
 {
     public interface IUserPresentationService
     {
-        void CreateUser(User user);
-        User ReadUser(Guid id);
-        void UpdateUser(User user);
-        void DeleteUser(Guid id);
-        List<User> AllUsers();
+        void AddUser(CreateUserViewModel user);
+        List<AllUsersViewModel> AllUsers();
+        EditUserViewModel GetEditUserView(Guid id);
+        void EditUser(EditUserViewModel user);
+        DeleteUserViewModel GetDeleteUserView(Guid id);
+        void DeleteUser(Guid userId);
 
-        Country ReadCountry(Guid id);
-
-        City ReadCity(Guid id);
+        List<Country> AllCountries();
+        List<City> AllCities();
 
     }
 }

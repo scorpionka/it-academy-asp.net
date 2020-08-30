@@ -45,9 +45,19 @@ namespace HW3.Domain.DomainServices
             return userRepository.ReadCountry(id);
         }
 
+        public List<Country> AllCountries()
+        {
+            return userRepository.AllCountries();
+        }
+
         public City ReadCity(Guid id)
         {
             return userRepository.ReadCity(id);
+        }
+
+        public List<City> AllCities()
+        {
+            return userRepository.AllCities();
         }
 
     }

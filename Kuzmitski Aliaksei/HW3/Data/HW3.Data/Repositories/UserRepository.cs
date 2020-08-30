@@ -94,16 +94,25 @@ namespace HW3.Data.Repositories
         }
 
 
-        public City ReadCity(Guid id)
-        {
-            return cities.FirstOrDefault(x => x.Id.Equals(id));
-        }
-
-
         public Country ReadCountry(Guid id)
         {
             return countries.FirstOrDefault(x => x.Id.Equals(id));
         }
 
+        public List<Country> AllCountries()
+        {
+            return countries;
+        }
+
+
+        public City ReadCity(Guid id)
+        {
+            return cities.FirstOrDefault(x => x.Id.Equals(id));
+        }
+
+        public List<City> AllCities()
+        {
+            return cities;
+        }
     }
 }

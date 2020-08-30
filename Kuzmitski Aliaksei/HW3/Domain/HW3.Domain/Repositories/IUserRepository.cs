@@ -13,8 +13,10 @@ namespace HW3.Domain.Repositories
         List<User> AllUsers();
 
         Country ReadCountry(Guid id);
+        List<Country> AllCountries();
 
         City ReadCity(Guid id);
+        List<City> AllCities();
 
     }
 }
