@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    class BaseRepository : IBaseRepository<Book>
+   public class BaseRepository : IBaseRepository<Book>
     {
         public void Add(Book model)
         {

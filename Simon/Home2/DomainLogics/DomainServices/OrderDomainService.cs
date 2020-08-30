@@ -1,5 +1,6 @@
 ﻿using DomainLogics.DomainServices.Interface;
 using DomainLogics.Models;
+using DomainLogics.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,32 +11,21 @@ namespace DomainLogics.DomainServices
 {
     public class OrderDomainService : IOrderDomainService
     {
+        private readonly IOrderRepository orderRepository;
+
+        public OrderDomainService (IOrderRepository orderRepository)
+        {
+            this.orderRepository = orderRepository;
+        }
+
         public List<BookOrder> BookOrdersToday()
         {
-            BookOrder order = new BookOrder()
-            {
-                Book = new Book { BookAuthor = "author", BookPrice = 1, BookTitle = "title" },
-                TimeOrder = DateTime.Now
-            };
-
-            var orders = new List<BookOrder>();
-            orders.Add(order);
-            var allBookOrdersToday = orders.Where(x => x.TimeOrder.Day == DateTime.Today.Day).ToList();
-            return allBookOrdersToday;
+          return orderRepository.BookOrdersToday();
         }
 
         public List<BookOrder> AllBookOrder()
         {
-            BookOrder order = new BookOrder()
-            {
-                Book = new Book { BookAuthor = "author", BookPrice = 1, BookTitle = "title" },
-                TimeOrder = DateTime.Now
-            };
-
-            var allBookOrders = new List<BookOrder>();
-            allBookOrders.Add(order);
-            
-            return allBookOrders;
+            return orderRepository.AllBookOrder();
         }
     }
 }

@@ -41,17 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainServices\OrderDomainService\GetAllOrdersDomainService.cs" />
-    <Compile Include="DomainServices\OrderDomainService\GetOrdersMadeTodayDomainService.cs" />
-    <Compile Include="DomainServices\OrderDomainService\OrderInterfaces\IGetAllOrdersDomainService.cs" />
-    <Compile Include="DomainServices\OrderDomainService\OrderInterfaces\IGetOrdersMadeTodayDomainService.cs" />
-    <Compile Include="DomainServices\ProductDomainService\GetAllBooksDomainService.cs" />
-    <Compile Include="DomainServices\ProductDomainService\GetTopFiveBooksDomainService.cs" />
-    <Compile Include="DomainServices\ProductDomainService\ProductInterfaces\IGetAllBooksDomainService.cs" />
-    <Compile Include="DomainServices\ProductDomainService\ProductInterfaces\IGetTopFiveBooksDomainService.cs" />
+    <Compile Include="DomainServices\OrderDomainService\OrderInterfaces\IOrdersDomainService.cs" />
+    <Compile Include="DomainServices\OrderDomainService\OrdersDomainService.cs" />
+    <Compile Include="DomainServices\ProductDomainService\BooksDomainService.cs" />
+    <Compile Include="DomainServices\ProductDomainService\ProductInterfaces\IBooksDomainService.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Entities\Book.cs" />
     <Compile Include="Models\Entities\Order.cs" />
+    <Compile Include="Models\Entities\OrdersBooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\IProductRepository.cs" />

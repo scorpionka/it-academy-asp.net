@@ -9,16 +9,34 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    class OrderRepository : BaseRepository, IOrderRepository
+   public class OrderRepository : BaseRepository, IOrderRepository
     {
       public  List<BookOrder> AllBookOrder()
         {
-            throw new NotImplementedException();
+            BookOrder order = new BookOrder()
+            {
+                Book = new Book { BookAuthor = "author", BookPrice = 1, BookTitle = "title" },
+                TimeOrder = DateTime.Now
+            };
+
+            var allBookOrders = new List<BookOrder>();
+            allBookOrders.Add(order);
+
+            return allBookOrders;
         }
 
       public List<BookOrder> BookOrdersToday()
         {
-            throw new NotImplementedException();
+            BookOrder order = new BookOrder()
+            {
+                Book = new Book { BookAuthor = "author", BookPrice = 1, BookTitle = "title" },
+                TimeOrder = DateTime.Now
+            };
+
+            var orders = new List<BookOrder>();
+            orders.Add(order);
+            var allBookOrdersToday = orders.Where(x => x.TimeOrder.Day == DateTime.Today.Day).ToList();
+            return allBookOrdersToday;
         }
     }
 }

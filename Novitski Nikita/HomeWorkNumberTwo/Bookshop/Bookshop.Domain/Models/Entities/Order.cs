@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Bookshop.Domain.Models.Entities
 {
@@ -12,7 +10,7 @@ namespace Bookshop.Domain.Models.Entities
 
         public DateTime CreatedAt { get; set; }
 
-        public List<Book> Books { get; set; }
+        public List<OrdersBooks> OrdersBooks { get; set; }
          
     }
 }
