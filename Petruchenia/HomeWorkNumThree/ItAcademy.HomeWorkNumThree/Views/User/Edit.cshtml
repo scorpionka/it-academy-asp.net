@@ -2,28 +2,36 @@
 @{
     ViewBag.Title = "Edit";
 }
-ViewBag.User = user;
+
 <h2>Edit</h2>
 
 @using (Html.BeginForm("Edit", "User", FormMethod.Post))
 {
-    <label for="fname">First name:</label>
+    <label for="fname">@ViewBag.User.FirstName:</label>
+    <br>
+    <input type="text" id="FirstName" name="FirstName">
+    <br>
+    <label for="lname">@ViewBag.User.LastName:</label>
     <br>
     <input type="text" id="LastName" name="LastName">
     <br>
-    <label for="lname">Last name:</label>
+    <label for="Email">@ViewBag.User.Email:</label>
     <br>
-    <input type="text" id="LastName" name="LastName">
+    <input type="text" id="Email" name="Email">
+    <br>
+    <label for="Email">Phone:</label>
+    <br>
+    <input type="number" id="Phone" name="Phone">
+    <br>
     <br>
     <label for="lname">Title:</label>
-    <br>
     @Html.DropDownList("Title",
     EnumHelper.GetSelectList
     (typeof(ItAcademy.HomeWorkNumThree.Models.Title)),
     "Title:",
     new { @class = "form-control" })
     <br>
-    <label for="fname">Country:</label>
+    <label for="fname">@ViewBag.User.County:</label>
     <br>
     <select id="Country" name="Country">
         <option value="">Country</option>
@@ -33,7 +41,7 @@ ViewBag.User = user;
         <option>France</option>
     </select>
     <br>
-    <label for="fname">Sity:</label>
+    <label for="fname">@ViewBag.User.Sity:</label>
     <br>
     <select id="Sity" name="Sity">
         <option value="">Sity</option>
@@ -43,12 +51,5 @@ ViewBag.User = user;
         <option>Paris</option>
     </select>
     <br>
-    <label for="Email">Email:</label>
-    <br>
-    <input type="text" id="Email" name="Email">
-    <br>
-    <label for="Email">Phone:</label>
-    <br>
-    <input type="number" id="Phone" name="Phone">
     <p><input type="submit" value="Send" /></p>
 }

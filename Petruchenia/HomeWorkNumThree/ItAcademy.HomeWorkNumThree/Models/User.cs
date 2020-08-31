@@ -27,6 +27,7 @@ namespace ItAcademy.HomeWorkNumThree.Models
         public string Email { get; set; }
 
     }
+
     public enum Title
         {
             Mr,

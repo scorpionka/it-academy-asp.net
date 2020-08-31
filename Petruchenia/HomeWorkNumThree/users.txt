@@ -29,8 +29,8 @@
       "Email": "Mary@gmail.com"
     },
     {
-      "FirstName": "Юрий",
-      "LastName": "Петрученя",
+      "FirstName": "Ahalay",
+      "LastName": "Mahalay",
       "UserTitle": 0,
       "Country": "Belarus",
       "Sity": "Minsk",

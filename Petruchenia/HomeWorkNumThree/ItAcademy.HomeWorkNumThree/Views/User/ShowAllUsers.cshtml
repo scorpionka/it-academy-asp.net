@@ -7,13 +7,13 @@
             <td>@Html.ActionLink("Create", "Create", "User", null)</td>
             </tr>
     </table>
-    
 
 <h2>ShowAllUsers</h2>
+
 <table>
     @foreach (var u in ViewBag.User)
     {
-
+        int i = 0;
     <tr>
         <td>@u.FirstName @u.LastName</td>
         <td>@u.UserTitle</td>
@@ -24,29 +24,29 @@
 
 
         <td>
-            @Html.ActionLink("Edit", "User", new
-            {
-                FirstName = u.FirstName,
-                LastName = u.LastName,
-                UserTitle = u.UserTitle,
-                Country = u.Country,
-                Sity = u.Sity,
-                Email = u.Email,
-                Phone = u.Phone
-            },
+            @Html.ActionLink("Edit", "Edit", "User", new
+       {
+           FirstName = u.FirstName,
+           LastName = u.LastName,
+           UserTitle = u.UserTitle,
+           Country = u.Country,
+           Sity = u.Sity,
+           Email = u.Email,
+           Phone = u.Phone
+       },
                 null)
         <td>
 
         <td>
-            @Html.ActionLink("Delete", "User", new
-            {
-              Id = u.Id
-            },
+            @Html.ActionLink("Delete", "Delete", "User", new
+       {
+           i
+       },
                 null)
         <td>
     </tr>
 
-        
+        i++;
     }
 </table>
 

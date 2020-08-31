@@ -13,8 +13,20 @@ namespace ItAcademy.HomeWorkNumThree.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult Edit(User user)
+        public ActionResult Edit(
+            string FirstName,
+            string LastName,
+            string Country,
+            string Sity,
+            string Email
+            )
         {
+            User user = new User();
+            user.FirstName = FirstName;
+            user.LastName = LastName;
+            user.Country = Country;
+            user.Sity = Sity;
+            user.Email = Email;
             ViewBag.User = user;
             return View();
         }
@@ -27,10 +39,10 @@ namespace ItAcademy.HomeWorkNumThree.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Delete(int id)
+        [HttpGet]
+        public ActionResult Delete(int i)
         {
-            int a = id;
+            Helper.Delete(i);
             return View();
         }
 
@@ -48,7 +60,9 @@ namespace ItAcademy.HomeWorkNumThree.Controllers
         {
             Helper.AddToJson(a);
 
-            return View();
+            ViewBag.User = Helper.GetFromJson();
+
+            return View("~/Views/User/ShowAllUsers.cshtml");
         }
     }
 }
