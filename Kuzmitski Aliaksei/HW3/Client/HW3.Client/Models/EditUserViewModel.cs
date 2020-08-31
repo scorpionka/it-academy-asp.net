@@ -1,12 +1,12 @@
 ﻿using HW3.Domain.Models;
 using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace HW3.Client.Models
 {
     public class EditUserViewModel
     {
+        public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Title Title { get; set; }
@@ -21,10 +21,8 @@ namespace HW3.Client.Models
         public string Comments { get; set; }
 
 
-        [DisplayName("Country")]
         public Guid CountryId { get; set; }
 
-        [DisplayName("City")]
         public Guid CityId { get; set; }
 
     }

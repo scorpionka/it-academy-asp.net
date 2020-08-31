@@ -20,6 +20,8 @@ namespace HW3.Client.PresentationServices
         public void AddUser(CreateUserViewModel user)
         {
             User newUser = CreateUserViewModelMapping(user);
+            newUser.City = domainService.ReadCity(user.CityId);
+            newUser.Country = domainService.ReadCountry(user.CountryId);
             domainService.CreateUser(newUser);
         }
 
@@ -44,6 +46,8 @@ namespace HW3.Client.PresentationServices
         public void EditUser(EditUserViewModel user)
         {
             User updateUser = EditUserViewModelMappingToUser(user);
+            updateUser.City = domainService.ReadCity(user.CityId);
+            updateUser.Country = domainService.ReadCountry(user.CountryId);
             domainService.UpdateUser(updateUser);
         }
 

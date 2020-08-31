@@ -10,7 +10,7 @@ namespace HW3.Client.Util
         {
             return new User
             {
-                Id = new Guid(),
+                Id = Guid.NewGuid(),
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Title = user.Title,
@@ -40,6 +40,7 @@ namespace HW3.Client.Util
         {
             return new EditUserViewModel
             {
+                Id = user.Id,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Phone = user.Phone,
@@ -55,6 +56,7 @@ namespace HW3.Client.Util
         {
             return new User
             {
+                Id = user.Id,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Phone = user.Phone,
@@ -70,6 +72,7 @@ namespace HW3.Client.Util
         {
             return new DeleteUserViewModel
             {
+                Id = user.Id,
                 Name = $"{user.FirstName} {user.LastName}",
             };
         }

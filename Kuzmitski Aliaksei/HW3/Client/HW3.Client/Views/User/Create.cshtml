@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Create user</h2>
 
 @using (Html.BeginForm("Create", "User", FormMethod.Post))
 {
@@ -47,16 +47,16 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.CountryId, "Countries", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.CountryId, "Country", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.CountryId, (SelectList)ViewBag.Countries, "Please select", htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.CountryId, ViewBag.Countries as SelectList, "Please select", htmlAttributes: new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.CityId, "Cities", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.CityId, "City", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("CityId", (SelectList)ViewBag.Cities, "Please select", htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownList("CityId", ViewBag.Cities as SelectList, "Please select", htmlAttributes: new { @class = "form-control" })
         </div>
     </div>
 
