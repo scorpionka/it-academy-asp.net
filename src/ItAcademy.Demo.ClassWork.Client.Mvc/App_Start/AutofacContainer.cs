@@ -6,7 +6,11 @@ using System.Web;
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
+using FluentValidation;
+using FluentValidation.Mvc;
+using ItAcademy.Demo.ClassWork.Client.Mvc.App_Start.Core;
 using ItAcademy.Demo.ClassWork.Client.Mvc.Services.Interfaces;
+using ItAcademy.Demo.ClassWork.Client.Mvc.Validators;
 using ItAcademy.Demo.ClassWork.Domain.Repositories;
 using ItAcademy.Demo.ClassWork.Domain.Services.Interfaces;
 using ItAcademy.Demo.ClassWork.Domain.UnitOfWork;
@@ -42,9 +46,23 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.App_Start
                 .InstancePerDependency();
             builder.RegisterFilterProvider();
 
+            // Register the API Validators (the custome validators used for FluentValidation)
+            AssemblyScanner.FindValidatorsInAssemblyContaining<UserValidator>()
+                .ForEach(result =>
+                {
+                    builder.RegisterType(result.ValidatorType)
+                        .Keyed<IValidator>(result.InterfaceType)
+                        .As<IValidator>();
+                });
+
             var container = builder.Build();
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
+            FluentValidationModelValidatorProvider.Configure(config =>
+            {
+                config.ValidatorFactory = new AutofacValidatorFactory(container);
+            });
         }
     }
 }

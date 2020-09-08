@@ -1,8 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using FluentValidation.Attributes;
+using ItAcademy.Demo.ClassWork.Client.Mvc.Validators;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc.Models.EntityFramework
 {
-    public class UserViewModel
+    //[Validator(typeof(UserValidator))]
+    public class UserViewModelV3
     {
         public int Id { get; set; }
 
