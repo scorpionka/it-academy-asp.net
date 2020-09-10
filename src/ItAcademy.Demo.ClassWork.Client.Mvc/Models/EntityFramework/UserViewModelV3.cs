@@ -4,7 +4,7 @@ using ItAcademy.Demo.ClassWork.Client.Mvc.Validators;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc.Models.EntityFramework
 {
-    //[Validator(typeof(UserValidator))]
+    [Validator(typeof(UserValidator))]
     public class UserViewModelV3
     {
         public int Id { get; set; }

@@ -5,7 +5,7 @@
 @model ItAcademy.Demo.ClassWork.Client.Mvc.Models.EntityFramework.UserViewModelV3
 
 <style>
-    .field-validation-error {
+    .field-validation-error, .validation-summary-errors {
         color: red;
         font-size: 12px;
         margin-left: 14px;
@@ -20,7 +20,7 @@
 {
     <h4>Create a new User</h4>
     <hr />
-
+    @Html.ValidationSummary(true);
     <div class="form-group">
         @Html.ValidationMessageFor(x => x.FirstName)
         @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })

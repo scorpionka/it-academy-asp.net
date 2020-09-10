@@ -26,7 +26,7 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc
                 AutoMapperConfig.Configure(cfg);
             });
 
-           // FluentValidationModelValidatorProvider.Configure();
+            //FluentValidationModelValidatorProvider.Configure();
         }
     }
 }

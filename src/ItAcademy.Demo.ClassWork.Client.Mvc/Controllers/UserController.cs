@@ -1,6 +1,4 @@
-﻿using System;
-using System.Web.Mvc;
-using FluentValidation;
+﻿using System.Web.Mvc;
 using ItAcademy.Demo.ClassWork.Client.Mvc.Models.EntityFramework;
 using ItAcademy.Demo.ClassWork.Client.Mvc.Services.Interfaces;
 

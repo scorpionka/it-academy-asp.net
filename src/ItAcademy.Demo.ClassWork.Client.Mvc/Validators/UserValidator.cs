@@ -13,8 +13,17 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Validators
 
             RuleFor(x => x.LastName)
                 .NotEmpty()
-                .WithMessage("Please specify a last name. V")
+                .WithMessage("Please specify a last name.")
                 .MaximumLength(10).WithMessage("Last Name can have a max of 15 characters.");
+
+            RuleFor(x => x)
+                .Must(ValidateFirstAndLastNames)
+                .WithMessage("Last Name and First Name in total can have a max of 10 characters.");
+        }
+
+        private bool ValidateFirstAndLastNames(UserViewModelV3 m)
+        {
+            return m.LastName.Length + m.FirstName.Length <= 10;
         }
     }
 }

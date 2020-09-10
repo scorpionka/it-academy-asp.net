@@ -46,23 +46,39 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.App_Start
                 .InstancePerDependency();
             builder.RegisterFilterProvider();
 
-            // Register the API Validators (the custome validators used for FluentValidation)
-            AssemblyScanner.FindValidatorsInAssemblyContaining<UserValidator>()
-                .ForEach(result =>
-                {
-                    builder.RegisterType(result.ValidatorType)
-                        .Keyed<IValidator>(result.InterfaceType)
-                        .As<IValidator>();
-                });
+            //Register the API Validators(the custome validators used for FluentValidation)
+            //AssemblyScanner.FindValidatorsInAssemblyContaining<UserValidator>()
+            //                    .ForEach(result =>
+            //                    {
+            //                        builder.RegisterType(result.ValidatorType)
+            //                        .Keyed<IValidator>(result.InterfaceType)
+            //                        .As<IValidator>();
+            //                    });
 
             var container = builder.Build();
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            FluentValidationModelValidatorProvider.Configure();
 
-            FluentValidationModelValidatorProvider.Configure(config =>
-            {
-                config.ValidatorFactory = new AutofacValidatorFactory(container);
-            });
+            //FluentValidationModelValidatorProvider.Configure(config =>
+            //{
+            //    config.ValidatorFactory = new AutofacValidatorFactory(container);
+            //});
         }
     }
 }
+
+
+//FluentValidationModelValidatorProvider.Configure(config =>
+//            {
+//                config.ValidatorFactory = new AutofacValidatorFactory(container);
+//            });
+
+// Register the API Validators (the custome validators used for FluentValidation)
+//AssemblyScanner.FindValidatorsInAssemblyContaining<UserValidator>()
+//                .ForEach(result =>
+//                {
+//    builder.RegisterType(result.ValidatorType)
+//        .Keyed<IValidator>(result.InterfaceType)
+//        .As<IValidator>();
+//});
