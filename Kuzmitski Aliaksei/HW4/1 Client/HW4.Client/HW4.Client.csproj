@@ -140,6 +140,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="PresentationServices\BasePresentationService.cs" />
+    <Compile Include="PresentationServices\Interfaces\IBasePresentationService.cs" />
+    <Compile Include="PresentationServices\Interfaces\IUserPresentationService.cs" />
+    <Compile Include="PresentationServices\UserPresentationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -295,6 +299,10 @@
     <ProjectReference Include="..\..\2 Domain\HW4.Domain\HW4.Domain.csproj">
       <Project>{ec0b6438-d490-448a-b571-97575e16a98b}</Project>
       <Name>HW4.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\3 Data\HW4.Data\HW4.Data.csproj">
+      <Project>{9371B465-279C-4144-B41D-58F8F564EA02}</Project>
+      <Name>HW4.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
