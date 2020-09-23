@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HW4.Initializer
+﻿namespace HW4.Initializer
 {
     class Program
     {
         static void Main(string[] args)
         {
+            InitializerDatabase newDatabase = new InitializerDatabase();
+            newDatabase.InitializeDatabase();
         }
     }
 }

@@ -10,20 +10,5 @@
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Comments { get; set; }
-
-        public User(int id, string firstName, string lastName, Title title, Country country, City city, string phone,
-            string email, string comments)
-            : base(id)
-        {
-            Id = id;
-            FirstName = firstName;
-            LastName = lastName;
-            Title = title;
-            Country = country;
-            City = city;
-            Phone = phone;
-            Email = email;
-            Comments = comments;
-        }
     }
 }
