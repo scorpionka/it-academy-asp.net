@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using HW4.Client.PresentationServices.Interfaces;
+using HW4.Client.Util;
+using HW4.Client.Util.Mapper;
 using HW4.Data.Context;
 using HW4.Data.Context.Interfaces;
 using HW4.Data.Repositories;
@@ -21,8 +23,8 @@ namespace HW4.Client.App_Start
 
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
 
-            builder.RegisterAssemblyTypes(typeof(IBasePresentationService).Assembly)
-                .Where(t => typeof(IBasePresentationService).IsAssignableFrom(t))
+            builder.RegisterAssemblyTypes(typeof(IUserPresentationService).Assembly)
+                .Where(t => typeof(IUserPresentationService).IsAssignableFrom(t))
                 .AsImplementedInterfaces()
                 .InstancePerDependency();
 
@@ -36,9 +38,9 @@ namespace HW4.Client.App_Start
                 .AsImplementedInterfaces()
                 .InstancePerDependency();
 
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
 
-            builder.RegisterType<DatabaseContext>().As<IDatabaseContext>().InstancePerRequest();
+            builder.RegisterType<DatabaseContext>().As<IDatabaseContext>().InstancePerLifetimeScope();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
