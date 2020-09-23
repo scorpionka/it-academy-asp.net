@@ -8,6 +8,7 @@ namespace HW4.Domain.DomainServices.Interfaces
         List<User> GetAllUsers();
         void AddUser(User user);
         User GetUser(int id);
+        void EditUser();
         void DeleteUser(int userId);
         bool ValidationOfUserData(User user);
     }

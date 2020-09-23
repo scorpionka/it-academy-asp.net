@@ -3,7 +3,6 @@ using HW4.Client.PresentationServices.Interfaces;
 using HW4.Client.Util.Mapper;
 using HW4.Domain.DomainServices.Interfaces;
 using HW4.Domain.Models;
-using HW4.Domain.UnitOfWork.Interfaces;
 using System.Collections.Generic;
 
 namespace HW4.Client.PresentationServices
@@ -13,15 +12,13 @@ namespace HW4.Client.PresentationServices
         private readonly IUserDomainService userDomainService;
         private readonly ICountryDomainService countryDomainService;
         private readonly ICityDomainService cityDomainService;
-        private readonly IUnitOfWork unitOfWork;
 
         public UserPresentationService(IUserDomainService userDomainService, ICountryDomainService countryDomainService,
-            ICityDomainService cityDomainService, IUnitOfWork unitOfWork)
+            ICityDomainService cityDomainService)
         {
             this.userDomainService = userDomainService;
             this.countryDomainService = countryDomainService;
             this.cityDomainService = cityDomainService;
-            this.unitOfWork = unitOfWork;
         }
 
         public void AddUser(CreateUserViewModel user)
@@ -52,10 +49,11 @@ namespace HW4.Client.PresentationServices
 
         public void EditUser(EditUserViewModel user)
         {
-            User updateUser = EditUserViewModelMappingToUser(user);
+            User updateUser = userDomainService.GetUser(user.Id);
+            updateUser = EditUserViewModelMappingToUser(user, updateUser);
             updateUser.City = cityDomainService.GetCity(user.CityId);
             updateUser.Country = countryDomainService.GetCountry(user.CountryId);
-            unitOfWork.SaveChanges();
+            userDomainService.EditUser();
         }
 
         public DeleteUserViewModel GetDeleteUserView(int id)

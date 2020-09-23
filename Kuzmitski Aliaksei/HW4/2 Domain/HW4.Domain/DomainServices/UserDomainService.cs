@@ -29,6 +29,11 @@ namespace HW4.Domain.DomainServices
             unitOfWork.SaveChanges();
         }
 
+        public void EditUser()
+        {
+            unitOfWork.SaveChanges();
+        }
+
         public List<User> GetAllUsers()
         {
             return userRepository.GetAllUsers();

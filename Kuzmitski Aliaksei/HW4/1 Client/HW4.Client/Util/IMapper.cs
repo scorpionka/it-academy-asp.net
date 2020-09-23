@@ -8,7 +8,7 @@ namespace HW4.Client.Util
         User CreateUserViewModelMapping(CreateUserViewModel user);
         AllUsersViewModel AllUsersViewModelMapping(User user);
         EditUserViewModel EditUserViewModelMapping(User user);
-        User EditUserViewModelMappingToUser(EditUserViewModel user);
+        User EditUserViewModelMappingToUser(EditUserViewModel tempUser, User user);
         DeleteUserViewModel DeleteUserViewModelMapping(User user);
     }
 }

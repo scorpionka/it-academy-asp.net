@@ -3,7 +3,7 @@ using HW4.Domain.Models;
 
 namespace HW4.Client.Util.Mapper
 {
-    public class Mapper
+    public class Mapper : IMapper
     {
         public User CreateUserViewModelMapping(CreateUserViewModel user)
         {
@@ -48,18 +48,16 @@ namespace HW4.Client.Util.Mapper
             };
         }
 
-        public User EditUserViewModelMappingToUser(EditUserViewModel user)
+        public User EditUserViewModelMappingToUser(EditUserViewModel newUser, User user)
         {
-            return new User
-            {
-                Id = user.Id,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Phone = user.Phone,
-                Email = user.Email,
-                Title = user.Title,
-                Comments = user.Comments,
-            };
+            user.Id = newUser.Id;
+            user.FirstName = newUser.FirstName;
+            user.LastName = newUser.LastName;
+            user.Phone = newUser.Phone;
+            user.Email = newUser.Email;
+            user.Title = newUser.Title;
+            user.Comments = newUser.Comments;
+            return user;
         }
 
         public DeleteUserViewModel DeleteUserViewModelMapping(User user)
