@@ -1,5 +1,6 @@
 ﻿using HW4.Domain.Repositories.Interfaces;
 using HW4.Domain.UnitOfWork.Interfaces;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
@@ -19,29 +20,34 @@ namespace HW4.Data.Repositories
             return unitOfWork.Set<T>();
         }
 
-        public void Add(T item)
+        public virtual void Add(T item)
         {
             DbSet().Add(item);
         }
 
-        public void Delete(T item)
+        public virtual void Delete(T item)
         {
             DbSet().Remove(item);
         }
 
-        public void DeleteById(int itemId)
+        public virtual void DeleteById(int itemId)
         {
             Delete(Get(itemId));
         }
 
-        public T Get(int id)
+        public virtual T Get(int id)
         {
             return DbSet().Find(id);
         }
 
-        public System.Collections.Generic.List<T> GetAll()
+        public virtual List<T> GetAll()
         {
             return DbSet().ToList();
+        }
+
+        protected virtual IQueryable<T> GetSelectedInfo()
+        {
+            return DbSet().AsQueryable();
         }
     }
 }
