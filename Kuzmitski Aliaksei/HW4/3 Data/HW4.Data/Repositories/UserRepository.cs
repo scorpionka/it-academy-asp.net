@@ -1,4 +1,5 @@
 ﻿using HW4.Domain.Models;
+using HW4.Domain.Models.Other;
 using HW4.Domain.Repositories.Interfaces;
 using HW4.Domain.UnitOfWork.Interfaces;
 using System.Collections.Generic;
@@ -33,36 +34,23 @@ namespace HW4.Data.Repositories
             return user;
         }
 
-        private bool UniquenessOfEmail(string email)
+        public bool UniquenessOfEmail(string email)
         {
             return !GetSelectedInfo().Any(x => x.Email.Equals(email));
         }
 
-        private bool UniquenessOfFullName(string fullName)
+        public List<FullName> GetAllFullNames()
         {
-            List<string> usersFullNames = new List<string>();
-            GetFullNames()
-                .ForEach(x => usersFullNames.Add($"{x.FirstName}+{x.LastName}"));
-            return !usersFullNames.Contains(fullName);
-        }
-
-        private bool UniquenessOfPhone(string phone)
-        {
-            return !GetSelectedInfo().Any(x => x.Phone.Equals(phone));
-        }
-
-        private List<User> GetFullNames()
-        {
-            return GetSelectedInfo().Select(x => new User
+            return GetSelectedInfo().Select(c => new FullName
             {
-                FirstName = x.FirstName,
-                LastName = x.LastName
+                FirstName = c.FirstName,
+                LastName = c.LastName
             }).ToList();
         }
 
-        public bool ValidationOfUserData(User user)
+        public bool UniquenessOfPhone(string phone)
         {
-            return (!UniquenessOfFullName($"{user.FirstName}+{user.LastName}") & !UniquenessOfPhone(user.Phone) & !UniquenessOfEmail(user.Email));
+            return !GetSelectedInfo().Any(x => x.Phone.Equals(phone));
         }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using FluentValidation;
+using FluentValidation.Mvc;
+using HW4.Client.App_Start.FluentApi;
 using HW4.Client.PresentationServices.Interfaces;
-using HW4.Client.Util;
-using HW4.Client.Util.Mapper;
+using HW4.Client.Validators;
 using HW4.Data.Context;
 using HW4.Data.Context.Interfaces;
 using HW4.Data.Repositories;
@@ -42,8 +44,21 @@ namespace HW4.Client.App_Start
 
             builder.RegisterType<DatabaseContext>().As<IDatabaseContext>().InstancePerLifetimeScope();
 
+            AssemblyScanner.FindValidatorsInAssemblyContaining<CreateUserViewModelValidator>()
+                                    .ForEach(result =>
+                                    {
+                                        builder.RegisterType(result.ValidatorType)
+                                        .Keyed<IValidator>(result.InterfaceType)
+                                        .As<IValidator>();
+                                    });
+
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
+            FluentValidationModelValidatorProvider.Configure(config =>
+            {
+                config.ValidatorFactory = new AutofacValidatorFactory(container);
+            });
         }
     }
 }

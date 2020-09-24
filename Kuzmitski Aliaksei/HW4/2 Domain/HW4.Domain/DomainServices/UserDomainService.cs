@@ -44,9 +44,23 @@ namespace HW4.Domain.DomainServices
             return userRepository.GetUser(id);
         }
 
-        public bool ValidationOfUserData(User user)
+        public bool UniquenessOfEmail(string email)
         {
-            return userRepository.ValidationOfUserData(user);
+            return userRepository.UniquenessOfEmail(email);
+        }
+
+        public bool UniquenessOfFullName(string fullName)
+        {
+            List<string> getAllFullNames = new List<string>();
+            userRepository.GetAllFullNames()
+                .ForEach(x => getAllFullNames.Add($"{x.FirstName}+{x.LastName}"));
+
+            return !getAllFullNames.Contains(fullName);
+        }
+
+        public bool UniquenessOfPhone(string phone)
+        {
+            return userRepository.UniquenessOfPhone(phone);
         }
     }
 }

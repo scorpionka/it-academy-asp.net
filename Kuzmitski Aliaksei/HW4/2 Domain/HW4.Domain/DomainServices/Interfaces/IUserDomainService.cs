@@ -10,6 +10,9 @@ namespace HW4.Domain.DomainServices.Interfaces
         User GetUser(int id);
         void EditUser();
         void DeleteUser(int userId);
-        bool ValidationOfUserData(User user);
+        bool UniquenessOfFullName(string fullName);
+        bool UniquenessOfPhone(string phone);
+        bool UniquenessOfEmail(string email);
+
     }
 }

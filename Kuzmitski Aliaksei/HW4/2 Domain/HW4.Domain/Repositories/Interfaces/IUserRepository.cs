@@ -1,4 +1,5 @@
 ﻿using HW4.Domain.Models;
+using HW4.Domain.Models.Other;
 using System.Collections.Generic;
 
 namespace HW4.Domain.Repositories.Interfaces
@@ -7,6 +8,8 @@ namespace HW4.Domain.Repositories.Interfaces
     {
         List<User> GetAllUsers();
         User GetUser(int id);
-        bool ValidationOfUserData(User user);
+        bool UniquenessOfPhone(string phone);
+        bool UniquenessOfEmail(string email);
+        List<FullName> GetAllFullNames();
     }
 }
