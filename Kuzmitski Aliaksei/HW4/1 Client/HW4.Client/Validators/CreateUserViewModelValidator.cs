@@ -7,14 +7,11 @@ namespace HW4.Client.Validators
     public class CreateUserViewModelValidator : AbstractValidator<CreateUserViewModel>
     {
         private readonly IUserDomainService userDomainService;
-        private readonly ICityDomainService cityDomainService;
         private readonly ICountryDomainService countryDomainService;
 
-        public CreateUserViewModelValidator(IUserDomainService userDomainService, ICityDomainService cityDomainService,
-            ICountryDomainService countryDomainService)
+        public CreateUserViewModelValidator(IUserDomainService userDomainService, ICountryDomainService countryDomainService)
         {
             this.userDomainService = userDomainService;
-            this.cityDomainService = cityDomainService;
             this.countryDomainService = countryDomainService;
 
             RuleFor(x => x.FirstName)
@@ -42,10 +39,8 @@ namespace HW4.Client.Validators
                 MaximumLength(300).WithMessage("Field Comments can have a maximum of 300 characters.");
 
             RuleFor(x => x)
-                .Must(UniquenessOfFullName).WithMessage("Full Name already exists. Please modify First Name or Last Name.");
-
-            //RuleFor(x => x)
-            //    .Must(IsCityBelongsCountry).WithMessage("This City is not in this Country");
+                .Must(UniquenessOfFullName).WithMessage("Full Name already exists. Please modify First Name or Last Name.")
+                .Must(CheckingThePresenceOfCityInTheCountry).WithMessage("This City is not in this Country");
         }
 
         private bool UniquenessOfFullName(CreateUserViewModel userViewModel)
@@ -61,6 +56,11 @@ namespace HW4.Client.Validators
         private bool UniquenessOfEmail(string email)
         {
             return userDomainService.UniquenessOfEmail(email);
+        }
+
+        private bool CheckingThePresenceOfCityInTheCountry(CreateUserViewModel userViewModel)
+        {
+            return countryDomainService.CheckingThePresenceOfCityInTheCountry(userViewModel.CountryId, userViewModel.CityId);
         }
     }
 }
