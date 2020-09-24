@@ -4,6 +4,7 @@ using HW4.Client.Util.Mapper;
 using HW4.Domain.DomainServices.Interfaces;
 using HW4.Domain.Models;
 using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace HW4.Client.PresentationServices
 {
@@ -29,6 +30,22 @@ namespace HW4.Client.PresentationServices
             userDomainService.AddUser(newUser);
         }
 
+        public CreateUserViewModel CreateUserViewModel()
+        {
+            return new CreateUserViewModel
+            {
+                ListOfCities = new SelectList(cityDomainService.GetAllCities(), "Id", "Name"),
+                ListOfCountries = new SelectList(countryDomainService.GetAllCountries(), "Id", "Name"),
+            };
+        }
+
+        public CreateUserViewModel GetCreatedUserViewModel(CreateUserViewModel user)
+        {
+            user.ListOfCities = new SelectList(cityDomainService.GetAllCities(), "Id", "Name");
+            user.ListOfCountries = new SelectList(countryDomainService.GetAllCountries(), "Id", "Name");
+            return user;
+        }
+
         public List<AllUsersViewModel> AllUsers()
         {
             List<User> allUsers = userDomainService.GetAllUsers();
@@ -41,10 +58,10 @@ namespace HW4.Client.PresentationServices
             return allUsersView;
         }
 
-        public EditUserViewModel GetEditUserView(int id)
+        public EditUserViewModel GetEditUserViewModel(int id)
         {
             User user = userDomainService.GetUser(id);
-            return EditUserViewModelMapping(user);
+            return GetEditUserViewModel(EditUserViewModelMapping(user));
         }
 
         public void EditUser(EditUserViewModel user)
@@ -75,6 +92,13 @@ namespace HW4.Client.PresentationServices
         public List<City> AllCities()
         {
             return cityDomainService.GetAllCities();
+        }
+
+        public EditUserViewModel GetEditUserViewModel(EditUserViewModel user)
+        {
+            user.ListOfCities = new SelectList(cityDomainService.GetAllCities(), "Id", "Name");
+            user.ListOfCountries = new SelectList(countryDomainService.GetAllCountries(), "Id", "Name");
+            return user;
         }
     }
 }

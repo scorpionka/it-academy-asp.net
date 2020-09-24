@@ -13,31 +13,33 @@ namespace HW4.Client.Controllers
             this.presentationService = presentationService;
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
             return View(presentationService.AllUsers());
         }
 
+        [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.Countries = new SelectList(presentationService.AllCountries(), "Id", "Name");
-            ViewBag.Cities = new SelectList(presentationService.AllCities(), "Id", "Name");
-            return View();
+            return View(presentationService.CreateUserViewModel());
         }
 
         [HttpPost]
         public ActionResult Create(CreateUserViewModel user)
         {
-            presentationService.AddUser(user);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                presentationService.AddUser(user);
+                return RedirectToAction("Index");
+            }
+            return View(presentationService.GetCreatedUserViewModel(user));
         }
 
+        [HttpGet]
         public ActionResult Edit(int id)
         {
-            EditUserViewModel user = presentationService.GetEditUserView(id);
-            ViewBag.Countries = new SelectList(presentationService.AllCountries(), "Id", "Name");
-            ViewBag.Cities = new SelectList(presentationService.AllCities(), "Id", "Name");
-            return View(user);
+            return View(presentationService.GetEditUserViewModel(id));
         }
 
         [HttpPost]
@@ -48,11 +50,10 @@ namespace HW4.Client.Controllers
                 presentationService.EditUser(user);
                 return RedirectToAction("Index");
             }
-            ViewBag.Countries = new SelectList(presentationService.AllCountries(), "Id", "Name");
-            ViewBag.Cities = new SelectList(presentationService.AllCities(), "Id", "Name");
-            return View(user);
+            return View(presentationService.GetEditUserViewModel(user));
         }
 
+        [HttpGet]
         public ActionResult Delete(int id)
         {
             DeleteUserViewModel user = presentationService.GetDeleteUserView(id);

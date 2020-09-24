@@ -8,8 +8,11 @@ namespace HW4.Client.PresentationServices.Interfaces
     {
         void AddUser(CreateUserViewModel user);
         List<AllUsersViewModel> AllUsers();
-        EditUserViewModel GetEditUserView(int id);
+        EditUserViewModel GetEditUserViewModel(int id);
+        EditUserViewModel GetEditUserViewModel(EditUserViewModel user);
         void EditUser(EditUserViewModel user);
+        CreateUserViewModel CreateUserViewModel();
+        CreateUserViewModel GetCreatedUserViewModel(CreateUserViewModel user);
         DeleteUserViewModel GetDeleteUserView(int id);
         void DeleteUser(int userId);
         List<Country> AllCountries();
