@@ -27,8 +27,8 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.App_Start
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
 
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
-            builder.RegisterType<CoreDbContext>().As<ICoreDbContext>().InstancePerRequest();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
+            builder.RegisterType<CoreDbContext>().As<ICoreDbContext>().InstancePerLifetimeScope();
 
             builder.RegisterAssemblyTypes(typeof(IBasePresentationService).Assembly)
                .Where(t => typeof(IBasePresentationService).IsAssignableFrom(t))
@@ -47,23 +47,23 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.App_Start
             builder.RegisterFilterProvider();
 
             //Register the API Validators(the custome validators used for FluentValidation)
-            //AssemblyScanner.FindValidatorsInAssemblyContaining<UserValidator>()
-            //                    .ForEach(result =>
-            //                    {
-            //                        builder.RegisterType(result.ValidatorType)
-            //                        .Keyed<IValidator>(result.InterfaceType)
-            //                        .As<IValidator>();
-            //                    });
+            AssemblyScanner.FindValidatorsInAssemblyContaining<UserValidator>()
+                                    .ForEach(result =>
+                                    {
+                                        builder.RegisterType(result.ValidatorType)
+                                        .Keyed<IValidator>(result.InterfaceType)
+                                        .As<IValidator>();
+                                    });
 
             var container = builder.Build();
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-            FluentValidationModelValidatorProvider.Configure();
+            //FluentValidationModelValidatorProvider.Configure();
 
-            //FluentValidationModelValidatorProvider.Configure(config =>
-            //{
-            //    config.ValidatorFactory = new AutofacValidatorFactory(container);
-            //});
+            FluentValidationModelValidatorProvider.Configure(config =>
+            {
+                config.ValidatorFactory = new AutofacValidatorFactory(container);
+            });
         }
     }
 }

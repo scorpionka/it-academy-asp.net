@@ -1,12 +1,13 @@
 ﻿using System;
 using FluentValidation;
 using ItAcademy.Demo.ClassWork.Client.Mvc.Models.EntityFramework;
+using ItAcademy.Demo.ClassWork.Client.Mvc.Services.Interfaces;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc.Validators
 {
     public class UserValidator : AbstractValidator<UserViewModelV3>
     {
-        public UserValidator()
+        public UserValidator(IUserPresentationService userPresentationService)
         {
             RuleFor(x => x.FirstName)
                 .NotEmpty().WithMessage("First Name is required.")
@@ -30,7 +31,7 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Validators
 
         private bool ValidateFirstAndLastNames(UserViewModelV3 m)
         {
-            return m.LastName.Length + m.FirstName.Length <= 10;
+            return m.LastName?.Length + m.FirstName?.Length <= 10;
         }
     }
 }

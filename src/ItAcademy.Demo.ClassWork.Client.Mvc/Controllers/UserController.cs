@@ -18,6 +18,7 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
             return View();
         }
 
+
         public JsonResult GetByNameWithRole(string name)
         {
             return Json(userPresentationService.GetByNameWithRole(name), JsonRequestBehavior.AllowGet);
@@ -109,6 +110,25 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
             else
             {
                 return View("CreateV3", model);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult CreateAjax()
+        {
+            return View(new UserViewModelV2());
+        }
+
+        [HttpPost]
+        public ActionResult CreateAjax(UserViewModelV2 model)
+        {
+            if (ModelState.IsValid)
+            {
+                return View("Index");
+            }
+            else
+            {
+                return PartialView("CreateAjaxPartial", model);
             }
         }
     }

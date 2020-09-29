@@ -1,7 +1,41 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+<button>Get</button>
+<script type="text/javascript">
+
+	$(function () {
+		$('button').on('click', function () {
+
+			//$.ajax({
+			//	method: "POST",
+			//                   url: "/api/Users",
+			//                   data: {FirstName: "M", LastName: "L"}
+			//})
+			//.done(function( msg ){
+			//	alert( "Received Saved: " + msg);
+			//               });
+
+			$.post("/api/Users", { FirstName: "M", LastName: "L" }, function (msg) {
+				alert("Received Saved: " + msg);
+			})
+
+
+		});
+
+	});
+
+</script>
+
+<style>
+.center {
+text-align: center;
+}
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">

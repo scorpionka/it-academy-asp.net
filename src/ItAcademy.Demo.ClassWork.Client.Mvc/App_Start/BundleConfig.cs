@@ -25,6 +25,8 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            //BundleTable.EnableOptimizations = true;
         }
     }
 }

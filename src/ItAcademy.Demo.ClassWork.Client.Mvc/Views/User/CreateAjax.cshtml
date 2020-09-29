@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Ajax Edit";
+}
+
+@model ItAcademy.Demo.ClassWork.Client.Mvc.Models.EntityFramework.UserViewModelV2
+
+<style>
+    .field-validation-error, .validation-summary-errors {
+        color: red;
+        font-size: 12px;
+        margin-left: 14px;
+    }
+
+    .input-validation-error {
+        border: 1px solid red;
+    }
+</style>
+
+<h4>Create a new User</h4>
+<hr />
+
+<p>
+    @Ajax.ActionLink("Get current Datetime", "GetCurrentTimeNoCache", "FilterTest", new AjaxOptions { UpdateTargetId = "userSection" })
+</p>
+<div id="userSection">
+
+</div>
+
+@using (Ajax.BeginForm("CreateAjax", "User", null, new AjaxOptions { UpdateTargetId = "UserCreateV3" }, new { @class = "form-horizontal" }))
+{
+    <div id="UserCreateV3">
+        @{Html.RenderPartial("CreateAjaxPartial", Model);}
+    </div>
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.js")
+}

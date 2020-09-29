@@ -32,5 +32,10 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
         {
             return Content(DateTime.Now.ToString());
         }
+
+        public ActionResult GetCurrentTimeNoCache()
+        {
+            return Content(DateTime.Now.ToString());
+        }
     }
 }
