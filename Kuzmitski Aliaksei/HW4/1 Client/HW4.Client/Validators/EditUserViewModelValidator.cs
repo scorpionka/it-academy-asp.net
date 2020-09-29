@@ -24,7 +24,7 @@ namespace HW4.Client.Validators
                 .NotEmpty().WithMessage("Please specify a Email.")
                 .MaximumLength(30).WithMessage("Email can have a maximum of 30 characters.");
 
-            RuleFor(x => x.Title).
+            RuleFor(x => x.UserTitle).
                 NotNull().WithMessage("Please fill Title field.");
 
             RuleFor(x => x.Comments).

@@ -8,7 +8,7 @@ namespace HW4.Client.Models.ViewModels
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public Title Title { get; set; }
+        public Title UserTitle { get; set; }
         public int CountryId { get; set; }
         public SelectList ListOfCountries { get; set; }
         public int CityId { get; set; }

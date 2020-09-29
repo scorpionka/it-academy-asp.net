@@ -11,7 +11,7 @@ namespace HW4.Client.Util.Mapper
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Title = user.Title,
+                Title = user.UserTitle,
                 Phone = user.Phone,
                 Email = user.Email,
                 Comments = user.Comments,
@@ -24,7 +24,7 @@ namespace HW4.Client.Util.Mapper
             {
                 Id = user.Id,
                 Name = $"{user.FirstName} {user.LastName}",
-                Title = user.Title,
+                UserTitle = user.Title,
                 Country = user.Country,
                 City = user.City,
                 Phone = user.Phone,
@@ -41,7 +41,7 @@ namespace HW4.Client.Util.Mapper
                 LastName = user.LastName,
                 Phone = user.Phone,
                 Email = user.Email,
-                Title = user.Title,
+                UserTitle = user.Title,
                 CountryId = user.Country.Id,
                 CityId = user.City.Id,
                 Comments = user.Comments,
@@ -55,7 +55,7 @@ namespace HW4.Client.Util.Mapper
             user.LastName = newUser.LastName;
             user.Phone = newUser.Phone;
             user.Email = newUser.Email;
-            user.Title = newUser.Title;
+            user.Title = newUser.UserTitle;
             user.Comments = newUser.Comments;
             return user;
         }
