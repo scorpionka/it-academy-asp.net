@@ -8,8 +8,8 @@ namespace HW4.Domain.Repositories.Interfaces
     {
         List<User> GetAllUsers();
         User GetUser(int id);
-        bool UniquenessOfPhone(string phone);
-        bool UniquenessOfEmail(string email);
-        List<FullName> GetAllFullNames();
+        bool UniquenessOfPhone(int id, string phone);
+        bool UniquenessOfEmail(int id, string email);
+        bool UniquenessOfFullName(int id, string firstName, string lastName);
     }
 }

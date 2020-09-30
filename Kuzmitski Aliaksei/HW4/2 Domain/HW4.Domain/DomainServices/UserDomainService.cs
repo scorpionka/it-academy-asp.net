@@ -44,23 +44,19 @@ namespace HW4.Domain.DomainServices
             return userRepository.GetUser(id);
         }
 
-        public bool UniquenessOfEmail(string email)
+        public bool UniquenessOfEmail(int id, string email)
         {
-            return userRepository.UniquenessOfEmail(email);
+            return userRepository.UniquenessOfEmail(id, email);
         }
 
-        public bool UniquenessOfFullName(string fullName)
+        public bool UniquenessOfFullName(int id, string firstName, string lastName)
         {
-            List<string> getAllFullNames = new List<string>();
-            userRepository.GetAllFullNames()
-                .ForEach(x => getAllFullNames.Add($"{x.FirstName}+{x.LastName}"));
-
-            return !getAllFullNames.Contains(fullName);
+            return userRepository.UniquenessOfFullName(id, firstName, lastName);
         }
 
-        public bool UniquenessOfPhone(string phone)
+        public bool UniquenessOfPhone(int id, string phone)
         {
-            return userRepository.UniquenessOfPhone(phone);
+            return userRepository.UniquenessOfPhone(id, phone);
         }
     }
 }

@@ -10,9 +10,9 @@ namespace HW4.Domain.DomainServices.Interfaces
         User GetUser(int id);
         void EditUser();
         void DeleteUser(int userId);
-        bool UniquenessOfFullName(string fullName);
-        bool UniquenessOfPhone(string phone);
-        bool UniquenessOfEmail(string email);
+        bool UniquenessOfFullName(int id, string firstName, string lastName);
+        bool UniquenessOfPhone(int id, string phone);
+        bool UniquenessOfEmail(int id, string email);
 
     }
 }

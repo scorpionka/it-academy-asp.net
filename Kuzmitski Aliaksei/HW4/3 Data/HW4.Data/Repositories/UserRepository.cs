@@ -34,23 +34,62 @@ namespace HW4.Data.Repositories
             return user;
         }
 
-        public bool UniquenessOfEmail(string email)
+        public bool UniquenessOfEmail(int id, string email)
         {
-            return !GetSelectedInfo().Any(x => x.Email.Equals(email));
-        }
-
-        public List<FullName> GetAllFullNames()
-        {
-            return GetSelectedInfo().Select(c => new FullName
+            if (!id.Equals(0))
             {
-                FirstName = c.FirstName,
-                LastName = c.LastName
-            }).ToList();
+                if (Get(id).Email.Equals(email))
+                {
+                    return true;
+                }
+                else
+                {
+                    return !GetSelectedInfo().Any(x => x.Email.Equals(email));
+                }
+            }
+            else
+            {
+                return !GetSelectedInfo().Any(x => x.Email.Equals(email));
+            }
         }
 
-        public bool UniquenessOfPhone(string phone)
+        public bool UniquenessOfPhone(int id, string phone)
         {
-            return !GetSelectedInfo().Any(x => x.Phone.Equals(phone));
+            if (!id.Equals(0))
+            {
+                if (Get(id).Phone.Equals(phone))
+                {
+                    return true;
+                }
+                else
+                {
+                    return !GetSelectedInfo().Any(x => x.Phone.Equals(phone));
+                }
+            }
+            else
+            {
+                return !GetSelectedInfo().Any(x => x.Phone.Equals(phone));
+            }
+        }
+
+        public bool UniquenessOfFullName(int id, string firstName, string lastName)
+        {
+            if (!id.Equals(0))
+            {
+                var user = Get(id);
+                if (user.FirstName.Equals(firstName) && user.LastName.Equals(lastName))
+                {
+                    return true;
+                }
+                else
+                {
+                    return !GetSelectedInfo().Any(c => c.FirstName.Equals(firstName) && c.LastName.Equals(lastName));
+                }
+            }
+            else
+            {
+                return !GetSelectedInfo().Any(c => c.FirstName.Equals(firstName) && c.LastName.Equals(lastName));
+            }
         }
     }
 }

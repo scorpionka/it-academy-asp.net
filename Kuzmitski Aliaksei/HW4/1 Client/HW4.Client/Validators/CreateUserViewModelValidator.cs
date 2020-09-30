@@ -43,24 +43,24 @@ namespace HW4.Client.Validators
                 .Must(CheckingThePresenceOfCityInTheCountry).WithMessage("This City is not in this Country");
         }
 
-        private bool UniquenessOfFullName(CreateUserViewModel userViewModel)
+        private bool UniquenessOfFullName(CreateUserViewModel createUserViewModel)
         {
-            return userDomainService.UniquenessOfFullName($"{userViewModel.FirstName}+{userViewModel.LastName}");
+            return userDomainService.UniquenessOfFullName(0, createUserViewModel.FirstName, createUserViewModel.LastName);
         }
 
-        private bool UniquenessOfPhone(string phone)
+        private bool UniquenessOfPhone(CreateUserViewModel createUserViewModel, string phone)
         {
-            return userDomainService.UniquenessOfPhone(phone);
+            return userDomainService.UniquenessOfPhone(0, phone);
         }
 
-        private bool UniquenessOfEmail(string email)
+        private bool UniquenessOfEmail(CreateUserViewModel createUserViewModel, string email)
         {
-            return userDomainService.UniquenessOfEmail(email);
+            return userDomainService.UniquenessOfEmail(0, email);
         }
 
-        private bool CheckingThePresenceOfCityInTheCountry(CreateUserViewModel userViewModel)
+        private bool CheckingThePresenceOfCityInTheCountry(CreateUserViewModel createUserViewModel)
         {
-            return countryDomainService.CheckingThePresenceOfCityInTheCountry(userViewModel.CountryId, userViewModel.CityId);
+            return countryDomainService.CheckingThePresenceOfCityInTheCountry(createUserViewModel.CountryId, createUserViewModel.CityId);
         }
     }
 }
