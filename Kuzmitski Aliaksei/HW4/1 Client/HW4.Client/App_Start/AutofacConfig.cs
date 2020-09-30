@@ -4,6 +4,8 @@ using FluentValidation;
 using FluentValidation.Mvc;
 using HW4.Client.App_Start.FluentApi;
 using HW4.Client.PresentationServices.Interfaces;
+using HW4.Client.Util;
+using HW4.Client.Util.Mapper;
 using HW4.Client.Validators;
 using HW4.Data.Context;
 using HW4.Data.Context.Interfaces;
@@ -39,6 +41,8 @@ namespace HW4.Client.App_Start
                 .AsClosedTypesOf(typeof(IBaseRepository<>))
                 .AsImplementedInterfaces()
                 .InstancePerDependency();
+
+            builder.RegisterType<Mapper>().As<IMapper>().SingleInstance();
 
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
 
