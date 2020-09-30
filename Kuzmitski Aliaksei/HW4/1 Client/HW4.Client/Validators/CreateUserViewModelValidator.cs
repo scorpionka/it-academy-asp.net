@@ -33,7 +33,7 @@ namespace HW4.Client.Validators
                 .Must(UniquenessOfEmail).WithMessage("This Email already exists");
 
             RuleFor(x => x.UserTitle).
-                NotNull().WithMessage("Please fill Title field.");
+                NotEmpty().WithMessage("Please fill Title field.");
 
             RuleFor(x => x.Comments).
                 MaximumLength(300).WithMessage("Field Comments can have a maximum of 300 characters.");
