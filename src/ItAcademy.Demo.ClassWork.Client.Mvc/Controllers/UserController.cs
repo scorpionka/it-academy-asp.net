@@ -4,7 +4,7 @@ using ItAcademy.Demo.ClassWork.Client.Mvc.Services.Interfaces;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
 {
-    public class UserController : Controller
+    public partial class UserController : Controller
     {
         private readonly IUserPresentationService userPresentationService;
 
@@ -13,25 +13,25 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
             this.userPresentationService = userPresentationService;
         }
 
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View();
         }
 
 
-        public JsonResult GetByNameWithRole(string name)
+        public virtual JsonResult GetByNameWithRole(string name)
         {
             return Json(userPresentationService.GetByNameWithRole(name), JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public virtual ActionResult Create()
         {
             return View(new UserViewModel());
         }
 
         [HttpPost]
-        public ActionResult Create(UserViewModel model)
+        public virtual ActionResult Create(UserViewModel model)
         {
             if (string.IsNullOrEmpty(model.FirstName))
             {
@@ -64,13 +64,13 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
         }
 
         [HttpGet]
-        public ActionResult CreateV2()
+        public virtual ActionResult CreateV2()
         {
             return View("CreateV2Client", new UserViewModelV2());
         }
 
         [HttpPost]
-        public ActionResult CreateV2(UserViewModelV2 model)
+        public virtual ActionResult CreateV2(UserViewModelV2 model)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
             }
         }
 
-        public JsonResult NoWhiteSpacesValidate(string LastName)
+        public virtual JsonResult NoWhiteSpacesValidate(string LastName)
         {
             if (LastName.Contains(" "))
             {
@@ -95,13 +95,13 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
         }
 
         [HttpGet]
-        public ActionResult CreateV3()
+        public virtual ActionResult CreateV3()
         {
             return View("CreateV3", new UserViewModelV3());
         }
 
         [HttpPost]
-        public ActionResult CreateV3(UserViewModelV3 model)
+        public virtual ActionResult CreateV3(UserViewModelV3 model)
         {
             if (ModelState.IsValid)
             {
@@ -114,13 +114,13 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
         }
 
         [HttpGet]
-        public ActionResult CreateAjax()
+        public virtual ActionResult CreateAjax()
         {
             return View(new UserViewModelV2());
         }
 
         [HttpPost]
-        public ActionResult CreateAjax(UserViewModelV2 model)
+        public virtual ActionResult CreateAjax(UserViewModelV2 model)
         {
             if (ModelState.IsValid)
             {

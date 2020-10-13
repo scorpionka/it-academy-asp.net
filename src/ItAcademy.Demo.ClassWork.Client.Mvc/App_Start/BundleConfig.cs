@@ -23,8 +23,8 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~" + Links.Content.bootstrap_css,
+                      "~" + Links.Content.Site_css));
 
             //BundleTable.EnableOptimizations = true;
         }

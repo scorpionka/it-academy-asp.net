@@ -51,18 +51,19 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.App_Start
                                     .ForEach(result =>
                                     {
                                         builder.RegisterType(result.ValidatorType)
-                                        .Keyed<IValidator>(result.InterfaceType)
-                                        .As<IValidator>();
+                                        .AsImplementedInterfaces()
+                                        .InstancePerLifetimeScope();
                                     });
 
             var container = builder.Build();
 
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            var dependencyResolver = new AutofacDependencyResolver(container);
+            DependencyResolver.SetResolver(dependencyResolver);
             //FluentValidationModelValidatorProvider.Configure();
 
             FluentValidationModelValidatorProvider.Configure(config =>
             {
-                config.ValidatorFactory = new AutofacValidatorFactory(container);
+                config.ValidatorFactory = new AutofacValidatorFactory(dependencyResolver);
             });
         }
     }

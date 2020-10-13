@@ -1,23 +1,28 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Threading;
+using System.Web.Mvc;
 using ItAcademy.Demo.ClassWork.Client.Mvc.Infrastructure.Filters;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
 {
-    public class HomeController : Controller
+    [Authorize]
+    public partial class HomeController : Controller
     {
-        public ActionResult Index()
+        [AllowAnonymous]
+        public virtual ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        public virtual ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        
+        public virtual ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 

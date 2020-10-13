@@ -8,32 +8,32 @@ using ItAcademy.Demo.ClassWork.Client.Mvc.Models.ActionFilterTest;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
 {
-    public class FilterTestController : Controller
+    public partial class FilterTestController : Controller
     {
         [CustomResultFilter]
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View(new Sum { Value = 3 });
         }
 
         [CustomActionFilter]
-        public ActionResult Sum(int a, int b)
+        public virtual ActionResult Sum(int a, int b)
         {
-            return Json(new Sum { Value = a + b }) ;
+            return Json(new Sum { Value = a + b });
         }
 
-        public ActionResult TestException()
+        public virtual ActionResult TestException()
         {
             throw new ApplicationException("IT Academy");
         }
 
         [OutputCache(Duration = 600)]
-        public ActionResult GetCurrentTime()
+        public virtual ActionResult GetCurrentTime()
         {
             return Content(DateTime.Now.ToString());
         }
 
-        public ActionResult GetCurrentTimeNoCache()
+        public virtual ActionResult GetCurrentTimeNoCache()
         {
             return Content(DateTime.Now.ToString());
         }

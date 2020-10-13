@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc.Areas.Admin.Controllers
 {
-    public class HomeController : Controller
+    public partial class HomeController : Controller
     {
         // GET: Admin/Home
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View();
         }

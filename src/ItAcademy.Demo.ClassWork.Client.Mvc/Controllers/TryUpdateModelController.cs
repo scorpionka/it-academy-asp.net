@@ -7,15 +7,15 @@ using ItAcademy.Demo.ClassWork.Client.Mvc.Models.TryUpdateModel;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
 {
-    public class TryUpdateModelController : Controller
+    public partial class TryUpdateModelController : Controller
     {
         // GET: TryUpdateModel
-        public ActionResult IndexV1(PersonViewModel personViewModel, StudentViewModel studentViewModel)
+        public virtual ActionResult IndexV1(PersonViewModel personViewModel, StudentViewModel studentViewModel)
         {
             return Json(new { personViewModel, studentViewModel }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult IndexV2()
+        public virtual ActionResult IndexV2()
         {
             var personViewModel = new PersonViewModel();
             personViewModel.Age = Convert.ToInt32(Request.QueryString["Age"]);
@@ -29,7 +29,7 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
             return Json(new { personViewModel, studentViewModel }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult IndexV3()
+        public virtual ActionResult IndexV3()
         {
             var personViewModel = new PersonViewModel();
             var studentViewModel = new StudentViewModel();
@@ -41,12 +41,12 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
             return Json(new { personViewModel, studentViewModel }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult IndexInclude([Bind(Include = "University, Name")] StudentViewModel studentViewModel)
+        public virtual ActionResult IndexInclude([Bind(Include = "University, Name")] StudentViewModel studentViewModel)
         {
             return Json(studentViewModel, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult IndexExclude([Bind(Exclude = "University, Name")] StudentViewModel studentViewModel)
+        public virtual ActionResult IndexExclude([Bind(Exclude = "University, Name")] StudentViewModel studentViewModel)
         {
             return Json(studentViewModel, JsonRequestBehavior.AllowGet);
         }
