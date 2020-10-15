@@ -8,19 +8,17 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
         [HttpGet]
         public virtual ActionResult Login(string returnUrl)
         {
-            TempData["returnUrl"] = returnUrl;
+            ViewBag.ReturnUrl = returnUrl;
 
             return View();
         }
 
         [HttpPost]
-        public virtual ActionResult Login(string username, string password)
+        public virtual ActionResult Login(string username, string password,string returnUrl)
         {
             // validate
 
             FormsAuthentication.SetAuthCookie(username, true);
-
-            var returnUrl = TempData["returnUrl"] as string;
 
             if (!string.IsNullOrWhiteSpace(returnUrl))
             {
