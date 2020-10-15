@@ -14,6 +14,7 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin, User")]
         public virtual ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
+using ItAcademy.Demo.ClassWork.Client.Mvc.Models.Security;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
 {
@@ -14,11 +15,12 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult Login(string username, string password,string returnUrl)
+        public virtual ActionResult Login(string username, string password, string returnUrl)
         {
             // validate
 
             FormsAuthentication.SetAuthCookie(username, true);
+            HttpContext.User = new ApplicationUser(username);
 
             if (!string.IsNullOrWhiteSpace(returnUrl))
             {

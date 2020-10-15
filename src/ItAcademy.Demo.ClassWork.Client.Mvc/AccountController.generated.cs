@@ -139,15 +139,16 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
         }
 
         [NonAction]
-        partial void LoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string username, string password);
+        partial void LoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string username, string password, string returnUrl);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Login(string username, string password)
+        public override System.Web.Mvc.ActionResult Login(string username, string password, string returnUrl)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "username", username);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "password", password);
-            LoginOverride(callInfo, username, password);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "returnUrl", returnUrl);
+            LoginOverride(callInfo, username, password, returnUrl);
             return callInfo;
         }
 
