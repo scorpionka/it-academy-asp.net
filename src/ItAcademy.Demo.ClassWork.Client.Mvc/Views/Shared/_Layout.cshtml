@@ -24,21 +24,22 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-
-                    @if (HttpContext.Current.User?.Identity?.IsAuthenticated == true)
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (User.Identity.IsAuthenticated)
                     {
+                        <li>
+                            @Html.ActionLink("Hello " + User.Identity.Name, MVC.Home.Index())
+                        </li>
                         <li>@Html.ActionLink("Logout", MVC.Account.Logout())</li>
+
                     }
                     else
                     {
                         <li>@Html.ActionLink("Login", MVC.Account.Login())</li>
                     }
-
                 </ul>
-                <div class="ml-auto" style="color:white">
-                    User: @(HttpContext.Current.User?.Identity?.Name)
-                </div>
-            </div>
+             </div>
             
         </div>
     </div>
